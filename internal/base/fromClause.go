@@ -1,2 +1,5 @@
 package base
-type FromClause struct {} 
+
+type FromClause struct {
+	FromSource *FromSource
+}

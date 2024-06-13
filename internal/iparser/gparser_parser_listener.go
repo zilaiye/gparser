@@ -3,15 +3,19 @@ package iparser
 import (
 	"fmt"
 	"github.com/antlr4-go/antlr/v4"
+	"github.com/golang-collections/collections/stack"
+	"gparser/internal/base"
 	parser "gparser/internal/iantlr/grammar"
 )
 
-type GparserParserListener struct{}
+type GparserParserListener struct {
+	stack *stack.Stack
+}
 
 var _ parser.HiveParserListener = &GparserParserListener{}
 
 func NewGparserParserListener() *GparserParserListener {
-	return new(GparserParserListener)
+	return &GparserParserListener{stack: stack.New()}
 }
 
 // VisitTerminal is called when a terminal node is visited.
@@ -29,10 +33,16 @@ func (s *GparserParserListener) EnterEveryRule(ctx antlr.ParserRuleContext) {
 func (s *GparserParserListener) ExitEveryRule(ctx antlr.ParserRuleContext) {}
 
 // EnterStatement is called when production statement is entered.
-func (s *GparserParserListener) EnterStatement(ctx *parser.StatementContext) {}
+func (s *GparserParserListener) EnterStatement(ctx *parser.StatementContext) {
+	stmt := &base.Statement{}
+	s.stack.Push(stmt)
+}
 
 // ExitStatement is called when production statement is exited.
-func (s *GparserParserListener) ExitStatement(ctx *parser.StatementContext) {}
+func (s *GparserParserListener) ExitStatement(ctx *parser.StatementContext) {
+	stmt := s.stack.Pop()
+	fmt.Println(stmt)
+}
 
 // EnterExplainStatement is called when production explainStatement is entered.
 func (s *GparserParserListener) EnterExplainStatement(ctx *parser.ExplainStatementContext) {}
@@ -59,10 +69,20 @@ func (s *GparserParserListener) EnterVectorizatonDetail(ctx *parser.Vectorizaton
 func (s *GparserParserListener) ExitVectorizatonDetail(ctx *parser.VectorizatonDetailContext) {}
 
 // EnterExecStatement is called when production execStatement is entered.
-func (s *GparserParserListener) EnterExecStatement(ctx *parser.ExecStatementContext) {}
+func (s *GparserParserListener) EnterExecStatement(ctx *parser.ExecStatementContext) {
+	execStmt := &base.ExecStatement{}
+	s.stack.Push(execStmt)
+}
 
 // ExitExecStatement is called when production execStatement is exited.
-func (s *GparserParserListener) ExitExecStatement(ctx *parser.ExecStatementContext) {}
+func (s *GparserParserListener) ExitExecStatement(ctx *parser.ExecStatementContext) {
+	if execStmt, ok := s.stack.Pop().(*base.ExecStatement); ok {
+		peek := s.stack.Peek()
+		peek.(*base.Statement).ExecStatement = execStmt
+	} else {
+		fmt.Println("ExitExecStatement encountered an error ! type not match ExecStatement ")
+	}
+}
 
 // EnterLoadStatement is called when production loadStatement is entered.
 func (s *GparserParserListener) EnterLoadStatement(ctx *parser.LoadStatementContext) {}

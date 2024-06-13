@@ -1,2 +1,4 @@
 package base
-type UniqueJoinToken struct {} 
+
+type UniqueJoinToken struct {
+}

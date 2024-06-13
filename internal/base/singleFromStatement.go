@@ -1,2 +1,6 @@
 package base
-type SingleFromStatement struct {} 
+
+type SingleFromStatement struct {
+	FromClause *FromClause
+	BodyList   []*Body
+}

@@ -1,2 +1,6 @@
 package base
-type QueryStatementExpressionBody struct {} 
+
+type QueryStatementExpressionBody struct {
+	FromStatement *FromStatement
+	RegularBody   *RegularBody
+}

@@ -1,2 +1,6 @@
 package base
-type Statement struct {} 
+
+type Statement struct {
+	ExplainStatement *ExplainStatement
+	ExecStatement    *ExecStatement
+}

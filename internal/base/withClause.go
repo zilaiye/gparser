@@ -1,2 +1,5 @@
 package base
-type WithClause struct {} 
+
+type WithClause struct {
+	CteStatement *[]CteStatement
+}
