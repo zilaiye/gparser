@@ -1,2 +1,6 @@
 package base
-type SelectList struct {} 
+
+type SelectList struct {
+	SourceCode
+	SelectItems []*SelectItem
+}

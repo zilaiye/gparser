@@ -35,6 +35,10 @@ func (s *GparserParserListener) ExitEveryRule(ctx antlr.ParserRuleContext) {}
 // EnterStatement is called when production statement is entered.
 func (s *GparserParserListener) EnterStatement(ctx *parser.StatementContext) {
 	stmt := &base.Statement{}
+	stmt.Code = ctx.GetText()
+	stmt.LineNum = ctx.GetStart().GetLine()
+	stmt.Column = ctx.GetStart().GetColumn()
+	stmt.LineStop = ctx.GetStop().GetLine()
 	s.stack.Push(stmt)
 }
 
@@ -71,6 +75,10 @@ func (s *GparserParserListener) ExitVectorizatonDetail(ctx *parser.VectorizatonD
 // EnterExecStatement is called when production execStatement is entered.
 func (s *GparserParserListener) EnterExecStatement(ctx *parser.ExecStatementContext) {
 	execStmt := &base.ExecStatement{}
+	execStmt.Code = ctx.GetText()
+	execStmt.LineNum = ctx.GetStart().GetLine()
+	execStmt.Column = ctx.GetStart().GetColumn()
+	execStmt.LineStop = ctx.GetStop().GetLine()
 	s.stack.Push(execStmt)
 }
 
@@ -1276,18 +1284,48 @@ func (s *GparserParserListener) ExitSetOperator(ctx *parser.SetOperatorContext) 
 
 // EnterQueryStatementExpression is called when production queryStatementExpression is entered.
 func (s *GparserParserListener) EnterQueryStatementExpression(ctx *parser.QueryStatementExpressionContext) {
+	stmt := &base.QueryStatementExpression{}
+	stmt.Code = ctx.GetText()
+	stmt.LineNum = ctx.GetStart().GetLine()
+	stmt.Column = ctx.GetStart().GetColumn()
+	stmt.LineStop = ctx.GetStop().GetLine()
+	s.stack.Push(stmt)
 }
 
 // ExitQueryStatementExpression is called when production queryStatementExpression is exited.
 func (s *GparserParserListener) ExitQueryStatementExpression(ctx *parser.QueryStatementExpressionContext) {
+	v, ok := s.stack.Pop().(*base.QueryStatementExpression)
+	if !ok {
+		fmt.Println("ExitQueryStatementExpression pop error ")
+	}
+	peek, ok := s.stack.Peek().(*base.ExecStatement)
+	if !ok {
+		fmt.Println("ExitQueryStatementExpression peek error ")
+	}
+	peek.QueryStatementExpression = v
 }
 
 // EnterQueryStatementExpressionBody is called when production queryStatementExpressionBody is entered.
 func (s *GparserParserListener) EnterQueryStatementExpressionBody(ctx *parser.QueryStatementExpressionBodyContext) {
+	entity := &base.QueryStatementExpressionBody{}
+	entity.Code = ctx.GetText()
+	entity.LineNum = ctx.GetStart().GetLine()
+	entity.Column = ctx.GetStart().GetColumn()
+	entity.LineStop = ctx.GetStop().GetLine()
+	s.stack.Push(entity)
 }
 
 // ExitQueryStatementExpressionBody is called when production queryStatementExpressionBody is exited.
 func (s *GparserParserListener) ExitQueryStatementExpressionBody(ctx *parser.QueryStatementExpressionBodyContext) {
+	v, ok := s.stack.Pop().(*base.QueryStatementExpressionBody)
+	if !ok {
+		fmt.Println("ExitQueryStatementExpression pop error ")
+	}
+	peek, ok := s.stack.Peek().(*base.QueryStatementExpression)
+	if !ok {
+		fmt.Println("ExitQueryStatementExpression peek error ")
+	}
+	peek.QueryStatementExpressionBody = v
 }
 
 // EnterWithClause is called when production withClause is entered.
@@ -1315,22 +1353,76 @@ func (s *GparserParserListener) EnterSingleFromStatement(ctx *parser.SingleFromS
 func (s *GparserParserListener) ExitSingleFromStatement(ctx *parser.SingleFromStatementContext) {}
 
 // EnterRegularBody is called when production regularBody is entered.
-func (s *GparserParserListener) EnterRegularBody(ctx *parser.RegularBodyContext) {}
+func (s *GparserParserListener) EnterRegularBody(ctx *parser.RegularBodyContext) {
+	entity := &base.RegularBody{}
+	entity.Code = ctx.GetText()
+	entity.LineNum = ctx.GetStart().GetLine()
+	entity.Column = ctx.GetStart().GetColumn()
+	entity.LineStop = ctx.GetStop().GetLine()
+	s.stack.Push(entity)
+}
 
 // ExitRegularBody is called when production regularBody is exited.
-func (s *GparserParserListener) ExitRegularBody(ctx *parser.RegularBodyContext) {}
+func (s *GparserParserListener) ExitRegularBody(ctx *parser.RegularBodyContext) {
+	v, ok := s.stack.Pop().(*base.RegularBody)
+	if !ok {
+		fmt.Println("RegularBody pop error ")
+	}
+	peek, ok := s.stack.Peek().(*base.QueryStatementExpressionBody)
+	if !ok {
+		fmt.Println("QueryStatementExpressionBody peek error ")
+	}
+	peek.RegularBody = v
+}
 
 // EnterAtomSelectStatement is called when production atomSelectStatement is entered.
-func (s *GparserParserListener) EnterAtomSelectStatement(ctx *parser.AtomSelectStatementContext) {}
+func (s *GparserParserListener) EnterAtomSelectStatement(ctx *parser.AtomSelectStatementContext) {
+	entity := &base.AtomSelectStatement{}
+	entity.Code = ctx.GetText()
+	entity.LineNum = ctx.GetStart().GetLine()
+	entity.Column = ctx.GetStart().GetColumn()
+	entity.LineStop = ctx.GetStop().GetLine()
+	s.stack.Push(entity)
+}
 
 // ExitAtomSelectStatement is called when production atomSelectStatement is exited.
-func (s *GparserParserListener) ExitAtomSelectStatement(ctx *parser.AtomSelectStatementContext) {}
+func (s *GparserParserListener) ExitAtomSelectStatement(ctx *parser.AtomSelectStatementContext) {
+	v, ok := s.stack.Pop().(*base.AtomSelectStatement)
+	if !ok {
+		fmt.Println("RegularBody pop error ")
+	}
+	peek, ok := s.stack.Peek().(*base.SelectStatement)
+	if !ok {
+		fmt.Println("QueryStatementExpressionBody peek error ")
+	}
+	peek.AtomSelectStatement = v
+}
 
 // EnterSelectStatement is called when production selectStatement is entered.
-func (s *GparserParserListener) EnterSelectStatement(ctx *parser.SelectStatementContext) {}
+func (s *GparserParserListener) EnterSelectStatement(ctx *parser.SelectStatementContext) {
+	entity := &base.SelectStatement{}
+	entity.Code = ctx.GetText()
+	entity.LineNum = ctx.GetStart().GetLine()
+	entity.Column = ctx.GetStart().GetColumn()
+	entity.LineStop = ctx.GetStop().GetLine()
+	s.stack.Push(entity)
+}
 
 // ExitSelectStatement is called when production selectStatement is exited.
-func (s *GparserParserListener) ExitSelectStatement(ctx *parser.SelectStatementContext) {}
+func (s *GparserParserListener) ExitSelectStatement(ctx *parser.SelectStatementContext) {
+	v, ok := s.stack.Pop().(*base.SelectStatement)
+	if !ok {
+		fmt.Println("SelectStatement pop error ")
+	}
+	peek := s.stack.Peek()
+	switch peek.(type) {
+	case *base.AtomSelectStatement:
+		peek.(*base.AtomSelectStatement).SelectStatement = v
+	case *base.SubQueryExpression:
+		peek.(*base.SubQueryExpression).SelectStatement = v
+	}
+
+}
 
 // EnterSetOpSelectStatement is called when production setOpSelectStatement is entered.
 func (s *GparserParserListener) EnterSetOpSelectStatement(ctx *parser.SetOpSelectStatementContext) {}
@@ -2264,10 +2356,27 @@ func (s *GparserParserListener) EnterVirtualTableSource(ctx *parser.VirtualTable
 func (s *GparserParserListener) ExitVirtualTableSource(ctx *parser.VirtualTableSourceContext) {}
 
 // EnterSelectClause is called when production selectClause is entered.
-func (s *GparserParserListener) EnterSelectClause(ctx *parser.SelectClauseContext) {}
+func (s *GparserParserListener) EnterSelectClause(ctx *parser.SelectClauseContext) {
+	entity := &base.SelectClause{}
+	entity.Code = ctx.GetText()
+	entity.LineNum = ctx.GetStart().GetLine()
+	entity.Column = ctx.GetStart().GetColumn()
+	entity.LineStop = ctx.GetStop().GetLine()
+	s.stack.Push(entity)
+}
 
 // ExitSelectClause is called when production selectClause is exited.
-func (s *GparserParserListener) ExitSelectClause(ctx *parser.SelectClauseContext) {}
+func (s *GparserParserListener) ExitSelectClause(ctx *parser.SelectClauseContext) {
+	v, ok := s.stack.Pop().(*base.SelectClause)
+	if !ok {
+		fmt.Println("SelectClause pop error ")
+	}
+	peek, ok := s.stack.Peek().(*base.AtomSelectStatement)
+	if !ok {
+		fmt.Println("QueryStatementExpressionBody peek error ")
+	}
+	peek.Query.SelectClause = v
+}
 
 // EnterAll_distinct is called when production all_distinct is entered.
 func (s *GparserParserListener) EnterAll_distinct(ctx *parser.All_distinctContext) {}
@@ -2276,10 +2385,27 @@ func (s *GparserParserListener) EnterAll_distinct(ctx *parser.All_distinctContex
 func (s *GparserParserListener) ExitAll_distinct(ctx *parser.All_distinctContext) {}
 
 // EnterSelectList is called when production selectList is entered.
-func (s *GparserParserListener) EnterSelectList(ctx *parser.SelectListContext) {}
+func (s *GparserParserListener) EnterSelectList(ctx *parser.SelectListContext) {
+	entity := &base.SelectList{}
+	entity.Code = ctx.GetText()
+	entity.LineNum = ctx.GetStart().GetLine()
+	entity.Column = ctx.GetStart().GetColumn()
+	entity.LineStop = ctx.GetStop().GetLine()
+	s.stack.Push(entity)
+}
 
 // ExitSelectList is called when production selectList is exited.
-func (s *GparserParserListener) ExitSelectList(ctx *parser.SelectListContext) {}
+func (s *GparserParserListener) ExitSelectList(ctx *parser.SelectListContext) {
+	v, ok := s.stack.Pop().(*base.SelectList)
+	if !ok {
+		fmt.Println("SelectList pop error ")
+	}
+	peek, ok := s.stack.Peek().(*base.SelectClause)
+	if !ok {
+		fmt.Println("SelectClause peek error ")
+	}
+	peek.SelectList = v
+}
 
 // EnterSelectTrfmClause is called when production selectTrfmClause is entered.
 func (s *GparserParserListener) EnterSelectTrfmClause(ctx *parser.SelectTrfmClauseContext) {}
@@ -2288,10 +2414,27 @@ func (s *GparserParserListener) EnterSelectTrfmClause(ctx *parser.SelectTrfmClau
 func (s *GparserParserListener) ExitSelectTrfmClause(ctx *parser.SelectTrfmClauseContext) {}
 
 // EnterSelectItem is called when production selectItem is entered.
-func (s *GparserParserListener) EnterSelectItem(ctx *parser.SelectItemContext) {}
+func (s *GparserParserListener) EnterSelectItem(ctx *parser.SelectItemContext) {
+	entity := &base.SelectItem{}
+	entity.Code = ctx.GetText()
+	entity.LineNum = ctx.GetStart().GetLine()
+	entity.Column = ctx.GetStart().GetColumn()
+	entity.LineStop = ctx.GetStop().GetLine()
+	s.stack.Push(entity)
+}
 
 // ExitSelectItem is called when production selectItem is exited.
-func (s *GparserParserListener) ExitSelectItem(ctx *parser.SelectItemContext) {}
+func (s *GparserParserListener) ExitSelectItem(ctx *parser.SelectItemContext) {
+	v, ok := s.stack.Pop().(*base.SelectItem)
+	if !ok {
+		fmt.Println("SelectList pop error ")
+	}
+	peek, ok := s.stack.Peek().(*base.SelectList)
+	if !ok {
+		fmt.Println("SelectClause peek error ")
+	}
+	peek.SelectItems = append(peek.SelectItems, v)
+}
 
 // EnterTrfmClause is called when production trfmClause is entered.
 func (s *GparserParserListener) EnterTrfmClause(ctx *parser.TrfmClauseContext) {}

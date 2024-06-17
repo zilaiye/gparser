@@ -1,2 +1,5 @@
 package base
-type SelectItem struct {} 
+
+type SelectItem struct {
+	SourceCode
+}

@@ -1,6 +1,7 @@
 package base
 
 type ExecStatement struct {
+	SourceCode
 	QueryStatementExpression *QueryStatementExpression
 	LoadStatement            *LoadStatement
 	ExportStatement          *ExportStatement

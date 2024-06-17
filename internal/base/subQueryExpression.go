@@ -1,2 +1,6 @@
 package base
-type SubQueryExpression struct {} 
+
+type SubQueryExpression struct {
+	SourceCode
+	SelectStatement *SelectStatement
+}

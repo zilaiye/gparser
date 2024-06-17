@@ -4064,6 +4064,16 @@ func (s *StatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *StatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -4272,6 +4282,16 @@ func (s *ExplainStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ExplainStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitExplainStatement(s)
+	}
+}
+
+func (s *ExplainStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitExplainStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -4543,6 +4563,16 @@ func (s *ExplainOptionContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ExplainOptionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitExplainOption(s)
+	}
+}
+
+func (s *ExplainOptionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitExplainOption(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -4861,6 +4891,16 @@ func (s *VectorizationOnlyContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *VectorizationOnlyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitVectorizationOnly(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -4976,6 +5016,16 @@ func (s *VectorizatonDetailContext) EnterRule(listener antlr.ParseTreeListener) 
 func (s *VectorizatonDetailContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitVectorizatonDetail(s)
+	}
+}
+
+func (s *VectorizatonDetailContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitVectorizatonDetail(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -5320,6 +5370,16 @@ func (s *ExecStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ExecStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitExecStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -5603,6 +5663,16 @@ func (s *LoadStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *LoadStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitLoadStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -5830,6 +5900,16 @@ func (s *ReplicationClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ReplicationClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitReplicationClause(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -6032,6 +6112,16 @@ func (s *ExportStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ExportStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitExportStatement(s)
+	}
+}
+
+func (s *ExportStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitExportStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -6249,6 +6339,16 @@ func (s *ImportStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ImportStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitImportStatement(s)
+	}
+}
+
+func (s *ImportStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitImportStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -6545,6 +6645,16 @@ func (s *ReplDumpStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ReplDumpStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitReplDumpStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -6777,6 +6887,16 @@ func (s *ReplDbPolicyContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ReplDbPolicyContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitReplDbPolicy(s)
+	}
+}
+
+func (s *ReplDbPolicyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitReplDbPolicy(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -7015,6 +7135,16 @@ func (s *ReplLoadStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ReplLoadStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitReplLoadStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -7212,6 +7342,16 @@ func (s *ReplConfigsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ReplConfigsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitReplConfigs(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -7372,6 +7512,16 @@ func (s *ReplConfigsListContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ReplConfigsListContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitReplConfigsList(s)
+	}
+}
+
+func (s *ReplConfigsListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitReplConfigsList(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -7539,6 +7689,16 @@ func (s *ReplTableLevelPolicyContext) EnterRule(listener antlr.ParseTreeListener
 func (s *ReplTableLevelPolicyContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitReplTableLevelPolicy(s)
+	}
+}
+
+func (s *ReplTableLevelPolicyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitReplTableLevelPolicy(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -7747,6 +7907,16 @@ func (s *ReplStatusStatementContext) EnterRule(listener antlr.ParseTreeListener)
 func (s *ReplStatusStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitReplStatusStatement(s)
+	}
+}
+
+func (s *ReplStatusStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitReplStatusStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -8658,6 +8828,16 @@ func (s *DdlStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *DdlStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDdlStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -9125,6 +9305,16 @@ func (s *IfExistsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *IfExistsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitIfExists(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -9238,6 +9428,16 @@ func (s *RestrictOrCascadeContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *RestrictOrCascadeContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitRestrictOrCascade(s)
+	}
+}
+
+func (s *RestrictOrCascadeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRestrictOrCascade(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -9356,6 +9556,16 @@ func (s *IfNotExistsContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *IfNotExistsContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitIfNotExists(s)
+	}
+}
+
+func (s *IfNotExistsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitIfNotExists(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -9478,6 +9688,16 @@ func (s *ForceContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ForceContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitForce(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -9583,6 +9803,16 @@ func (s *RewriteEnabledContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *RewriteEnabledContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitRewriteEnabled(s)
+	}
+}
+
+func (s *RewriteEnabledContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRewriteEnabled(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -9699,6 +9929,16 @@ func (s *RewriteDisabledContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *RewriteDisabledContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitRewriteDisabled(s)
+	}
+}
+
+func (s *RewriteDisabledContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRewriteDisabled(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -9823,6 +10063,16 @@ func (s *StoredAsDirsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *StoredAsDirsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitStoredAsDirs(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -9944,6 +10194,16 @@ func (s *OrReplaceContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *OrReplaceContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitOrReplace(s)
+	}
+}
+
+func (s *OrReplaceContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitOrReplace(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -10232,6 +10492,16 @@ func (s *CreateDatabaseStatementContext) EnterRule(listener antlr.ParseTreeListe
 func (s *CreateDatabaseStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCreateDatabaseStatement(s)
+	}
+}
+
+func (s *CreateDatabaseStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreateDatabaseStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -10579,6 +10849,16 @@ func (s *DbLocationContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *DbLocationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDbLocation(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -10710,6 +10990,16 @@ func (s *DbManagedLocationContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *DbManagedLocationContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitDbManagedLocation(s)
+	}
+}
+
+func (s *DbManagedLocationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDbManagedLocation(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -10846,6 +11136,16 @@ func (s *DbPropertiesContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *DbPropertiesContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitDbProperties(s)
+	}
+}
+
+func (s *DbPropertiesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDbProperties(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -11012,6 +11312,16 @@ func (s *DbPropertiesListContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *DbPropertiesListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDbPropertiesList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -11175,6 +11485,16 @@ func (s *DbConnectorNameContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *DbConnectorNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDbConnectorName(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -11300,6 +11620,16 @@ func (s *SwitchDatabaseStatementContext) EnterRule(listener antlr.ParseTreeListe
 func (s *SwitchDatabaseStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitSwitchDatabaseStatement(s)
+	}
+}
+
+func (s *SwitchDatabaseStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSwitchDatabaseStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -11478,6 +11808,16 @@ func (s *DropDatabaseStatementContext) ExitRule(listener antlr.ParseTreeListener
 	}
 }
 
+func (s *DropDatabaseStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDropDatabaseStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -11638,6 +11978,16 @@ func (s *DatabaseCommentContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *DatabaseCommentContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitDatabaseComment(s)
+	}
+}
+
+func (s *DatabaseCommentContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDatabaseComment(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -11823,6 +12173,16 @@ func (s *TruncateTableStatementContext) EnterRule(listener antlr.ParseTreeListen
 func (s *TruncateTableStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTruncateTableStatement(s)
+	}
+}
+
+func (s *TruncateTableStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTruncateTableStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -12069,6 +12429,16 @@ func (s *DropTableStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *DropTableStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDropTableStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -12273,6 +12643,16 @@ func (s *InputFileFormatContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *InputFileFormatContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitInputFileFormat(s)
+	}
+}
+
+func (s *InputFileFormatContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitInputFileFormat(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -12484,6 +12864,16 @@ func (s *TabTypeExprContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *TabTypeExprContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTabTypeExpr(s)
+	}
+}
+
+func (s *TabTypeExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTabTypeExpr(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -12728,6 +13118,16 @@ func (s *PartTypeExprContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PartTypeExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPartTypeExpr(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -12887,6 +13287,16 @@ func (s *TabPartColTypeExprContext) EnterRule(listener antlr.ParseTreeListener) 
 func (s *TabPartColTypeExprContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTabPartColTypeExpr(s)
+	}
+}
+
+func (s *TabPartColTypeExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTabPartColTypeExpr(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -13174,6 +13584,16 @@ func (s *DescStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *DescStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitDescStatement(s)
+	}
+}
+
+func (s *DescStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDescStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -13581,6 +14001,16 @@ func (s *AnalyzeStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *AnalyzeStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAnalyzeStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -13821,6 +14251,16 @@ func (s *From_inContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *From_inContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitFrom_in(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -13931,6 +14371,16 @@ func (s *Db_schemaContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *Db_schemaContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitDb_schema(s)
+	}
+}
+
+func (s *Db_schemaContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDb_schema(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -14558,6 +15008,16 @@ func (s *ShowStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ShowStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitShowStatement(s)
+	}
+}
+
+func (s *ShowStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitShowStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -15908,6 +16368,16 @@ func (s *ShowTablesFilterExprContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *ShowTablesFilterExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitShowTablesFilterExpr(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -16125,6 +16595,16 @@ func (s *LockStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *LockStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitLockStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -16327,6 +16807,16 @@ func (s *LockDatabaseContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *LockDatabaseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitLockDatabase(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -16448,6 +16938,16 @@ func (s *LockModeContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *LockModeContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitLockMode(s)
+	}
+}
+
+func (s *LockModeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitLockMode(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -16595,6 +17095,16 @@ func (s *UnlockStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *UnlockStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitUnlockStatement(s)
+	}
+}
+
+func (s *UnlockStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitUnlockStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -16779,6 +17289,16 @@ func (s *UnlockDatabaseContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *UnlockDatabaseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitUnlockDatabase(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -16928,6 +17448,16 @@ func (s *CreateRoleStatementContext) EnterRule(listener antlr.ParseTreeListener)
 func (s *CreateRoleStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCreateRoleStatement(s)
+	}
+}
+
+func (s *CreateRoleStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreateRoleStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -17084,6 +17614,16 @@ func (s *DropRoleStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *DropRoleStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitDropRoleStatement(s)
+	}
+}
+
+func (s *DropRoleStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDropRoleStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -17291,6 +17831,16 @@ func (s *GrantPrivilegesContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *GrantPrivilegesContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitGrantPrivileges(s)
+	}
+}
+
+func (s *GrantPrivilegesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitGrantPrivileges(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -17519,6 +18069,16 @@ func (s *RevokePrivilegesContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *RevokePrivilegesContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitRevokePrivileges(s)
+	}
+}
+
+func (s *RevokePrivilegesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRevokePrivileges(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -17767,6 +18327,16 @@ func (s *GrantRoleContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *GrantRoleContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitGrantRole(s)
+	}
+}
+
+func (s *GrantRoleContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitGrantRole(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -18050,6 +18620,16 @@ func (s *RevokeRoleContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *RevokeRoleContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRevokeRole(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -18258,6 +18838,16 @@ func (s *ShowRoleGrantsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ShowRoleGrantsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitShowRoleGrants(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -18386,6 +18976,16 @@ func (s *ShowRolesContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ShowRolesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitShowRoles(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -18504,6 +19104,16 @@ func (s *ShowCurrentRoleContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ShowCurrentRoleContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitShowCurrentRole(s)
+	}
+}
+
+func (s *ShowCurrentRoleContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitShowCurrentRole(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -18681,6 +19291,16 @@ func (s *SetRoleContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *SetRoleContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitSetRole(s)
+	}
+}
+
+func (s *SetRoleContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSetRole(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -18886,6 +19506,16 @@ func (s *ShowGrantsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ShowGrantsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitShowGrants(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -19074,6 +19704,16 @@ func (s *ShowRolePrincipalsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ShowRolePrincipalsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitShowRolePrincipals(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -19207,6 +19847,16 @@ func (s *PrivilegeIncludeColObjectContext) EnterRule(listener antlr.ParseTreeLis
 func (s *PrivilegeIncludeColObjectContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrivilegeIncludeColObject(s)
+	}
+}
+
+func (s *PrivilegeIncludeColObjectContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrivilegeIncludeColObject(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -19349,6 +19999,16 @@ func (s *PrivilegeObjectContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *PrivilegeObjectContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrivilegeObject(s)
+	}
+}
+
+func (s *PrivilegeObjectContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrivilegeObject(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -19554,6 +20214,16 @@ func (s *PrivObjectContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *PrivObjectContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrivObject(s)
+	}
+}
+
+func (s *PrivObjectContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrivObject(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -19894,6 +20564,16 @@ func (s *PrivObjectColsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PrivObjectColsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrivObjectCols(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -20174,6 +20854,16 @@ func (s *PrivilegeListContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PrivilegeListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrivilegeList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -20359,6 +21049,16 @@ func (s *PrivlegeDefContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PrivlegeDefContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrivlegeDef(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -20540,6 +21240,16 @@ func (s *PrivilegeTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PrivilegeTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrivilegeType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -20693,6 +21403,16 @@ func (s *PrincipalSpecificationContext) EnterRule(listener antlr.ParseTreeListen
 func (s *PrincipalSpecificationContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrincipalSpecification(s)
+	}
+}
+
+func (s *PrincipalSpecificationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrincipalSpecification(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -20871,6 +21591,16 @@ func (s *PrincipalNameContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PrincipalNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrincipalName(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -21034,6 +21764,16 @@ func (s *WithGrantOptionContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *WithGrantOptionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWithGrantOption(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -21160,6 +21900,16 @@ func (s *GrantOptionForContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *GrantOptionForContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitGrantOptionFor(s)
+	}
+}
+
+func (s *GrantOptionForContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitGrantOptionFor(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -21292,6 +22042,16 @@ func (s *AdminOptionForContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *AdminOptionForContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAdminOptionFor(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -21418,6 +22178,16 @@ func (s *WithAdminOptionContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *WithAdminOptionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitWithAdminOption(s)
+	}
+}
+
+func (s *WithAdminOptionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWithAdminOption(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -21638,6 +22408,16 @@ func (s *MetastoreCheckContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *MetastoreCheckContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitMetastoreCheck(s)
+	}
+}
+
+func (s *MetastoreCheckContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitMetastoreCheck(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -21885,6 +22665,16 @@ func (s *ResourceListContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ResourceListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitResourceList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -22063,6 +22853,16 @@ func (s *ResourceContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ResourceContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitResource(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -22184,6 +22984,16 @@ func (s *ResourceTypeContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ResourceTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitResourceType(s)
+	}
+}
+
+func (s *ResourceTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitResourceType(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -22381,6 +23191,16 @@ func (s *CreateFunctionStatementContext) EnterRule(listener antlr.ParseTreeListe
 func (s *CreateFunctionStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCreateFunctionStatement(s)
+	}
+}
+
+func (s *CreateFunctionStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreateFunctionStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -22625,6 +23445,16 @@ func (s *DropFunctionStatementContext) ExitRule(listener antlr.ParseTreeListener
 	}
 }
 
+func (s *DropFunctionStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDropFunctionStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -22786,6 +23616,16 @@ func (s *ReloadFunctionsStatementContext) EnterRule(listener antlr.ParseTreeList
 func (s *ReloadFunctionsStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitReloadFunctionsStatement(s)
+	}
+}
+
+func (s *ReloadFunctionsStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitReloadFunctionsStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -22961,6 +23801,16 @@ func (s *CreateMacroStatementContext) EnterRule(listener antlr.ParseTreeListener
 func (s *CreateMacroStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCreateMacroStatement(s)
+	}
+}
+
+func (s *CreateMacroStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreateMacroStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -23157,6 +24007,16 @@ func (s *DropMacroStatementContext) EnterRule(listener antlr.ParseTreeListener) 
 func (s *DropMacroStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitDropMacroStatement(s)
+	}
+}
+
+func (s *DropMacroStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDropMacroStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -23475,6 +24335,16 @@ func (s *CreateViewStatementContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
+func (s *CreateViewStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreateViewStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -23783,6 +24653,16 @@ func (s *ViewPartitionContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ViewPartitionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitViewPartition(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -23985,6 +24865,16 @@ func (s *ViewOrganizationContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ViewOrganizationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitViewOrganization(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -24135,6 +25025,16 @@ func (s *ViewClusterSpecContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ViewClusterSpecContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitViewClusterSpec(s)
+	}
+}
+
+func (s *ViewClusterSpecContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitViewClusterSpec(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -24298,6 +25198,16 @@ func (s *ViewComplexSpecContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ViewComplexSpecContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitViewComplexSpec(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -24445,6 +25355,16 @@ func (s *ViewDistSpecContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ViewDistSpecContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitViewDistSpec(s)
+	}
+}
+
+func (s *ViewDistSpecContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitViewDistSpec(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -24630,6 +25550,16 @@ func (s *ViewSortSpecContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ViewSortSpecContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitViewSortSpec(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -24801,6 +25731,16 @@ func (s *DropViewStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *DropViewStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitDropViewStatement(s)
+	}
+}
+
+func (s *DropViewStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDropViewStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -25153,6 +26093,16 @@ func (s *CreateMaterializedViewStatementContext) ExitRule(listener antlr.ParseTr
 	}
 }
 
+func (s *CreateMaterializedViewStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreateMaterializedViewStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -25473,6 +26423,16 @@ func (s *DropMaterializedViewStatementContext) ExitRule(listener antlr.ParseTree
 	}
 }
 
+func (s *DropMaterializedViewStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDropMaterializedViewStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -25723,6 +26683,16 @@ func (s *CreateScheduledQueryStatementContext) ExitRule(listener antlr.ParseTree
 	}
 }
 
+func (s *CreateScheduledQueryStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreateScheduledQueryStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -25932,6 +26902,16 @@ func (s *DropScheduledQueryStatementContext) ExitRule(listener antlr.ParseTreeLi
 	}
 }
 
+func (s *DropScheduledQueryStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDropScheduledQueryStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -26126,6 +27106,16 @@ func (s *AlterScheduledQueryStatementContext) EnterRule(listener antlr.ParseTree
 func (s *AlterScheduledQueryStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterScheduledQueryStatement(s)
+	}
+}
+
+func (s *AlterScheduledQueryStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterScheduledQueryStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -26329,6 +27319,16 @@ func (s *AlterScheduledQueryChangeContext) EnterRule(listener antlr.ParseTreeLis
 func (s *AlterScheduledQueryChangeContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterScheduledQueryChange(s)
+	}
+}
+
+func (s *AlterScheduledQueryChangeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterScheduledQueryChange(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -26577,6 +27577,16 @@ func (s *ScheduleSpecContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ScheduleSpecContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitScheduleSpec(s)
+	}
+}
+
+func (s *ScheduleSpecContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitScheduleSpec(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -26841,6 +27851,16 @@ func (s *ExecutedAsSpecContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ExecutedAsSpecContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitExecutedAsSpec(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -26982,6 +28002,16 @@ func (s *DefinedAsSpecContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *DefinedAsSpecContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitDefinedAsSpec(s)
+	}
+}
+
+func (s *DefinedAsSpecContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDefinedAsSpec(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -27130,6 +28160,16 @@ func (s *ShowFunctionIdentifierContext) ExitRule(listener antlr.ParseTreeListene
 	}
 }
 
+func (s *ShowFunctionIdentifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitShowFunctionIdentifier(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -27269,6 +28309,16 @@ func (s *ShowStmtIdentifierContext) EnterRule(listener antlr.ParseTreeListener) 
 func (s *ShowStmtIdentifierContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitShowStmtIdentifier(s)
+	}
+}
+
+func (s *ShowStmtIdentifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitShowStmtIdentifier(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -27414,6 +28464,16 @@ func (s *TableCommentContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *TableCommentContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTableComment(s)
+	}
+}
+
+func (s *TableCommentContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableComment(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -27636,6 +28696,16 @@ func (s *CreateTablePartitionSpecContext) EnterRule(listener antlr.ParseTreeList
 func (s *CreateTablePartitionSpecContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCreateTablePartitionSpec(s)
+	}
+}
+
+func (s *CreateTablePartitionSpecContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreateTablePartitionSpec(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -27887,6 +28957,16 @@ func (s *CreateTablePartitionColumnTypeSpecContext) ExitRule(listener antlr.Pars
 	}
 }
 
+func (s *CreateTablePartitionColumnTypeSpecContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreateTablePartitionColumnTypeSpec(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -28063,6 +29143,16 @@ func (s *CreateTablePartitionColumnSpecContext) EnterRule(listener antlr.ParseTr
 func (s *CreateTablePartitionColumnSpecContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCreateTablePartitionColumnSpec(s)
+	}
+}
+
+func (s *CreateTablePartitionColumnSpecContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreateTablePartitionColumnSpec(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -28245,6 +29335,16 @@ func (s *PartitionTransformSpecContext) ExitRule(listener antlr.ParseTreeListene
 	}
 }
 
+func (s *PartitionTransformSpecContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPartitionTransformSpec(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -28385,6 +29485,16 @@ func (s *ColumnNameTransformConstraintContext) EnterRule(listener antlr.ParseTre
 func (s *ColumnNameTransformConstraintContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitColumnNameTransformConstraint(s)
+	}
+}
+
+func (s *ColumnNameTransformConstraintContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnNameTransformConstraint(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -28561,6 +29671,16 @@ func (s *PartitionTransformTypeContext) EnterRule(listener antlr.ParseTreeListen
 func (s *PartitionTransformTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPartitionTransformType(s)
+	}
+}
+
+func (s *PartitionTransformTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPartitionTransformType(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -28890,6 +30010,16 @@ func (s *TableBucketsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TableBucketsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableBuckets(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -29135,6 +30265,16 @@ func (s *TableImplBucketsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TableImplBucketsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableImplBuckets(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -29372,6 +30512,16 @@ func (s *TableSkewedContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TableSkewedContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableSkewed(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -29581,6 +30731,16 @@ func (s *RowFormatContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *RowFormatContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRowFormat(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -29704,6 +30864,16 @@ func (s *RecordReaderContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *RecordReaderContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRecordReader(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -29817,6 +30987,16 @@ func (s *RecordWriterContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *RecordWriterContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitRecordWriter(s)
+	}
+}
+
+func (s *RecordWriterContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRecordWriter(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -30000,6 +31180,16 @@ func (s *RowFormatSerdeContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *RowFormatSerdeContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitRowFormatSerde(s)
+	}
+}
+
+func (s *RowFormatSerdeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRowFormatSerde(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -30265,6 +31455,16 @@ func (s *RowFormatDelimitedContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *RowFormatDelimitedContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRowFormatDelimited(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -30488,6 +31688,16 @@ func (s *TableRowFormatContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TableRowFormatContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableRowFormat(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -30623,6 +31833,16 @@ func (s *TablePropertiesPrefixedContext) ExitRule(listener antlr.ParseTreeListen
 	}
 }
 
+func (s *TablePropertiesPrefixedContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTablePropertiesPrefixed(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -30749,6 +31969,16 @@ func (s *TablePropertiesContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *TablePropertiesContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTableProperties(s)
+	}
+}
+
+func (s *TablePropertiesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableProperties(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -30955,6 +32185,16 @@ func (s *TablePropertiesListContext) EnterRule(listener antlr.ParseTreeListener)
 func (s *TablePropertiesListContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTablePropertiesList(s)
+	}
+}
+
+func (s *TablePropertiesListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTablePropertiesList(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -31174,6 +32414,16 @@ func (s *KeyValuePropertyContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *KeyValuePropertyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitKeyValueProperty(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -31311,6 +32561,16 @@ func (s *KeyPropertyContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *KeyPropertyContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitKeyProperty(s)
+	}
+}
+
+func (s *KeyPropertyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitKeyProperty(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -31473,6 +32733,16 @@ func (s *TableRowFormatFieldIdentifierContext) EnterRule(listener antlr.ParseTre
 func (s *TableRowFormatFieldIdentifierContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTableRowFormatFieldIdentifier(s)
+	}
+}
+
+func (s *TableRowFormatFieldIdentifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableRowFormatFieldIdentifier(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -31681,6 +32951,16 @@ func (s *TableRowFormatCollItemsIdentifierContext) ExitRule(listener antlr.Parse
 	}
 }
 
+func (s *TableRowFormatCollItemsIdentifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableRowFormatCollItemsIdentifier(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -31854,6 +33134,16 @@ func (s *TableRowFormatMapKeysIdentifierContext) ExitRule(listener antlr.ParseTr
 	}
 }
 
+func (s *TableRowFormatMapKeysIdentifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableRowFormatMapKeysIdentifier(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -32022,6 +33312,16 @@ func (s *TableRowFormatLinesIdentifierContext) ExitRule(listener antlr.ParseTree
 	}
 }
 
+func (s *TableRowFormatLinesIdentifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableRowFormatLinesIdentifier(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -32179,6 +33479,16 @@ func (s *TableRowNullFormatContext) EnterRule(listener antlr.ParseTreeListener) 
 func (s *TableRowNullFormatContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTableRowNullFormat(s)
+	}
+}
+
+func (s *TableRowNullFormatContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableRowNullFormat(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -32520,6 +33830,16 @@ func (s *TableFileFormatContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *TableFileFormatContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTableFileFormat(s)
+	}
+}
+
+func (s *TableFileFormatContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableFileFormat(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -32981,6 +34301,16 @@ func (s *TableLocationContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TableLocationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableLocation(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -33140,6 +34470,16 @@ func (s *ColumnNameTypeListContext) EnterRule(listener antlr.ParseTreeListener) 
 func (s *ColumnNameTypeListContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitColumnNameTypeList(s)
+	}
+}
+
+func (s *ColumnNameTypeListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnNameTypeList(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -33322,6 +34662,16 @@ func (s *ColumnNameTypeOrConstraintListContext) ExitRule(listener antlr.ParseTre
 	}
 }
 
+func (s *ColumnNameTypeOrConstraintListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnNameTypeOrConstraintList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -33498,6 +34848,16 @@ func (s *ColumnNameColonTypeListContext) EnterRule(listener antlr.ParseTreeListe
 func (s *ColumnNameColonTypeListContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitColumnNameColonTypeList(s)
+	}
+}
+
+func (s *ColumnNameColonTypeListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnNameColonTypeList(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -33680,6 +35040,16 @@ func (s *ColumnNameListContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ColumnNameListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnNameList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -33820,6 +35190,16 @@ func (s *ColumnNameContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ColumnNameContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitColumnName(s)
+	}
+}
+
+func (s *ColumnNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnName(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -33997,6 +35377,16 @@ func (s *ExtColumnNameContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ExtColumnNameContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitExtColumnName(s)
+	}
+}
+
+func (s *ExtColumnNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitExtColumnName(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -34224,6 +35614,16 @@ func (s *ColumnNameOrderListContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
+func (s *ColumnNameOrderListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnNameOrderList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -34374,6 +35774,16 @@ func (s *ColumnParenthesesListContext) EnterRule(listener antlr.ParseTreeListene
 func (s *ColumnParenthesesListContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitColumnParenthesesList(s)
+	}
+}
+
+func (s *ColumnParenthesesListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnParenthesesList(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -34538,6 +35948,16 @@ func (s *EnableValidateSpecificationContext) ExitRule(listener antlr.ParseTreeLi
 	}
 }
 
+func (s *EnableValidateSpecificationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitEnableValidateSpecification(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -34681,6 +36101,16 @@ func (s *EnableSpecificationContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
+func (s *EnableSpecificationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitEnableSpecification(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -34794,6 +36224,16 @@ func (s *ValidateSpecificationContext) ExitRule(listener antlr.ParseTreeListener
 	}
 }
 
+func (s *ValidateSpecificationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitValidateSpecification(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -34904,6 +36344,16 @@ func (s *EnforcedSpecificationContext) EnterRule(listener antlr.ParseTreeListene
 func (s *EnforcedSpecificationContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitEnforcedSpecification(s)
+	}
+}
+
+func (s *EnforcedSpecificationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitEnforcedSpecification(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -35046,6 +36496,16 @@ func (s *RelySpecificationContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *RelySpecificationContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitRelySpecification(s)
+	}
+}
+
+func (s *RelySpecificationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRelySpecification(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -35220,6 +36680,16 @@ func (s *CreateConstraintContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *CreateConstraintContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCreateConstraint(s)
+	}
+}
+
+func (s *CreateConstraintContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreateConstraint(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -35432,6 +36902,16 @@ func (s *AlterConstraintWithNameContext) ExitRule(listener antlr.ParseTreeListen
 	}
 }
 
+func (s *AlterConstraintWithNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterConstraintWithName(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -35590,6 +37070,16 @@ func (s *TableLevelConstraintContext) EnterRule(listener antlr.ParseTreeListener
 func (s *TableLevelConstraintContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTableLevelConstraint(s)
+	}
+}
+
+func (s *TableLevelConstraintContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableLevelConstraint(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -35758,6 +37248,16 @@ func (s *PkUkConstraintContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PkUkConstraintContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPkUkConstraint(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -35889,6 +37389,16 @@ func (s *CheckConstraintContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *CheckConstraintContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCheckConstraint(s)
+	}
+}
+
+func (s *CheckConstraintContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCheckConstraint(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -36169,6 +37679,16 @@ func (s *CreateForeignKeyContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *CreateForeignKeyContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCreateForeignKey(s)
+	}
+}
+
+func (s *CreateForeignKeyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreateForeignKey(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -36516,6 +38036,16 @@ func (s *AlterForeignKeyWithNameContext) ExitRule(listener antlr.ParseTreeListen
 	}
 }
 
+func (s *AlterForeignKeyWithNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterForeignKeyWithName(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -36721,6 +38251,16 @@ func (s *SkewedValueElementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SkewedValueElementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSkewedValueElement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -36887,6 +38427,16 @@ func (s *SkewedColumnValuePairListContext) EnterRule(listener antlr.ParseTreeLis
 func (s *SkewedColumnValuePairListContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitSkewedColumnValuePairList(s)
+	}
+}
+
+func (s *SkewedColumnValuePairListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSkewedColumnValuePairList(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -37058,6 +38608,16 @@ func (s *SkewedColumnValuePairContext) ExitRule(listener antlr.ParseTreeListener
 	}
 }
 
+func (s *SkewedColumnValuePairContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSkewedColumnValuePair(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -37225,6 +38785,16 @@ func (s *SkewedColumnValuesContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SkewedColumnValuesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSkewedColumnValues(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -37368,6 +38938,16 @@ func (s *SkewedColumnValueContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SkewedColumnValueContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSkewedColumnValue(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -37493,6 +39073,16 @@ func (s *SkewedValueLocationElementContext) EnterRule(listener antlr.ParseTreeLi
 func (s *SkewedValueLocationElementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitSkewedValueLocationElement(s)
+	}
+}
+
+func (s *SkewedValueLocationElementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSkewedValueLocationElement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -37622,6 +39212,16 @@ func (s *OrderSpecificationContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *OrderSpecificationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitOrderSpecification(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -37737,6 +39337,16 @@ func (s *NullOrderingContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *NullOrderingContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitNullOrdering(s)
+	}
+}
+
+func (s *NullOrderingContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitNullOrdering(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -37928,6 +39538,16 @@ func (s *ColumnNameOrderContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ColumnNameOrderContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnNameOrder(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -38115,6 +39735,16 @@ func (s *ColumnNameCommentListContext) ExitRule(listener antlr.ParseTreeListener
 	}
 }
 
+func (s *ColumnNameCommentListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnNameCommentList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -38298,6 +39928,16 @@ func (s *ColumnNameCommentContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ColumnNameCommentContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnNameComment(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -38435,6 +40075,16 @@ func (s *OrderSpecificationRewriteContext) EnterRule(listener antlr.ParseTreeLis
 func (s *OrderSpecificationRewriteContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitOrderSpecificationRewrite(s)
+	}
+}
+
+func (s *OrderSpecificationRewriteContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitOrderSpecificationRewrite(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -38615,6 +40265,16 @@ func (s *ColumnRefOrderContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ColumnRefOrderContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitColumnRefOrder(s)
+	}
+}
+
+func (s *ColumnRefOrderContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnRefOrder(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -38826,6 +40486,16 @@ func (s *ColumnNameTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ColumnNameTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnNameType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -38994,6 +40664,16 @@ func (s *ColumnNameTypeOrConstraintContext) ExitRule(listener antlr.ParseTreeLis
 	}
 }
 
+func (s *ColumnNameTypeOrConstraintContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnNameTypeOrConstraint(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -39138,6 +40818,16 @@ func (s *TableConstraintContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *TableConstraintContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTableConstraint(s)
+	}
+}
+
+func (s *TableConstraintContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableConstraint(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -39345,6 +41035,16 @@ func (s *ColumnNameTypeConstraintContext) ExitRule(listener antlr.ParseTreeListe
 	}
 }
 
+func (s *ColumnNameTypeConstraintContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnNameTypeConstraint(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -39525,6 +41225,16 @@ func (s *ColumnConstraintContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ColumnConstraintContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitColumnConstraint(s)
+	}
+}
+
+func (s *ColumnConstraintContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnConstraint(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -39763,6 +41473,16 @@ func (s *ForeignKeyConstraintContext) EnterRule(listener antlr.ParseTreeListener
 func (s *ForeignKeyConstraintContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitForeignKeyConstraint(s)
+	}
+}
+
+func (s *ForeignKeyConstraintContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitForeignKeyConstraint(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -40011,6 +41731,16 @@ func (s *ColConstraintContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ColConstraintContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColConstraint(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -40180,6 +41910,16 @@ func (s *AlterColumnConstraintContext) EnterRule(listener antlr.ParseTreeListene
 func (s *AlterColumnConstraintContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterColumnConstraint(s)
+	}
+}
+
+func (s *AlterColumnConstraintContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterColumnConstraint(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -40418,6 +42158,16 @@ func (s *AlterForeignKeyConstraintContext) EnterRule(listener antlr.ParseTreeLis
 func (s *AlterForeignKeyConstraintContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterForeignKeyConstraint(s)
+	}
+}
+
+func (s *AlterForeignKeyConstraintContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterForeignKeyConstraint(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -40666,6 +42416,16 @@ func (s *AlterColConstraintContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *AlterColConstraintContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterColConstraint(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -40867,6 +42627,16 @@ func (s *ColumnConstraintTypeContext) EnterRule(listener antlr.ParseTreeListener
 func (s *ColumnConstraintTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitColumnConstraintType(s)
+	}
+}
+
+func (s *ColumnConstraintTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnConstraintType(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -41073,6 +42843,16 @@ func (s *DefaultValContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *DefaultValContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDefaultVal(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -41206,6 +42986,16 @@ func (s *TableConstraintTypeContext) EnterRule(listener antlr.ParseTreeListener)
 func (s *TableConstraintTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTableConstraintType(s)
+	}
+}
+
+func (s *TableConstraintTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableConstraintType(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -41375,6 +43165,16 @@ func (s *ConstraintOptsCreateContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *ConstraintOptsCreateContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitConstraintOptsCreate(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -41517,6 +43317,16 @@ func (s *ConstraintOptsAlterContext) EnterRule(listener antlr.ParseTreeListener)
 func (s *ConstraintOptsAlterContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitConstraintOptsAlter(s)
+	}
+}
+
+func (s *ConstraintOptsAlterContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitConstraintOptsAlter(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -41710,6 +43520,16 @@ func (s *ColumnNameColonTypeContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
+func (s *ColumnNameColonTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnNameColonType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -41869,6 +43689,16 @@ func (s *ColTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ColTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -42013,6 +43843,16 @@ func (s *ColTypeListContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ColTypeListContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitColTypeList(s)
+	}
+}
+
+func (s *ColTypeListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColTypeList(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -42224,6 +44064,16 @@ func (s *TypeContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *TypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitType(s)
+	}
+}
+
+func (s *TypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitType(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -42536,6 +44386,16 @@ func (s *PrimitiveTypeContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *PrimitiveTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrimitiveType(s)
+	}
+}
+
+func (s *PrimitiveTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrimitiveType(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -43023,6 +44883,16 @@ func (s *ListTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ListTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitListType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -43170,6 +45040,16 @@ func (s *StructTypeContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *StructTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitStructType(s)
+	}
+}
+
+func (s *StructTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitStructType(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -43371,6 +45251,16 @@ func (s *MapTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *MapTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitMapType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -43541,6 +45431,16 @@ func (s *UnionTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *UnionTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitUnionType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -43686,6 +45586,16 @@ func (s *SetOperatorContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *SetOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitSetOperator(s)
+	}
+}
+
+func (s *SetOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSetOperator(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -43863,6 +45773,16 @@ func (s *QueryStatementExpressionContext) ExitRule(listener antlr.ParseTreeListe
 	}
 }
 
+func (s *QueryStatementExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitQueryStatementExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -44009,6 +45929,16 @@ func (s *QueryStatementExpressionBodyContext) EnterRule(listener antlr.ParseTree
 func (s *QueryStatementExpressionBodyContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitQueryStatementExpressionBody(s)
+	}
+}
+
+func (s *QueryStatementExpressionBodyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitQueryStatementExpressionBody(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -44183,6 +46113,16 @@ func (s *WithClauseContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *WithClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitWithClause(s)
+	}
+}
+
+func (s *WithClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWithClause(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -44408,6 +46348,16 @@ func (s *CteStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *CteStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCteStatement(s)
+	}
+}
+
+func (s *CteStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCteStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -44682,6 +46632,16 @@ func (s *FromStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *FromStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitFromStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -44902,6 +46862,16 @@ func (s *SingleFromStatementContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
+func (s *SingleFromStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSingleFromStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -45082,6 +47052,16 @@ func (s *RegularBodyContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *RegularBodyContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitRegularBody(s)
+	}
+}
+
+func (s *RegularBodyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRegularBody(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -45454,6 +47434,16 @@ func (s *AtomSelectStatementContext) EnterRule(listener antlr.ParseTreeListener)
 func (s *AtomSelectStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAtomSelectStatement(s)
+	}
+}
+
+func (s *AtomSelectStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAtomSelectStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -45917,6 +47907,16 @@ func (s *SelectStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SelectStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSelectStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -46243,6 +48243,16 @@ func (s *SetOpSelectStatementContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *SetOpSelectStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSetOpSelectStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -46415,6 +48425,16 @@ func (s *SelectStatementWithCTEContext) EnterRule(listener antlr.ParseTreeListen
 func (s *SelectStatementWithCTEContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitSelectStatementWithCTE(s)
+	}
+}
+
+func (s *SelectStatementWithCTEContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSelectStatementWithCTE(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -46751,6 +48771,16 @@ func (s *BodyContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *BodyContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitBody(s)
+	}
+}
+
+func (s *BodyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitBody(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -47319,6 +49349,16 @@ func (s *InsertClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *InsertClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitInsertClause(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -47614,6 +49654,16 @@ func (s *DestinationContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *DestinationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDestination(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -47855,6 +49905,16 @@ func (s *LimitClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *LimitClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitLimitClause(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -48081,6 +50141,16 @@ func (s *DeleteStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *DeleteStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDeleteStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -48247,6 +50317,16 @@ func (s *ColumnAssignmentClauseContext) ExitRule(listener antlr.ParseTreeListene
 	}
 }
 
+func (s *ColumnAssignmentClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnAssignmentClause(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -48384,6 +50464,16 @@ func (s *PrecedencePlusExpressionOrDefaultContext) EnterRule(listener antlr.Pars
 func (s *PrecedencePlusExpressionOrDefaultContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedencePlusExpressionOrDefault(s)
+	}
+}
+
+func (s *PrecedencePlusExpressionOrDefaultContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedencePlusExpressionOrDefault(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -48555,6 +50645,16 @@ func (s *SetColumnsClauseContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *SetColumnsClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitSetColumnsClause(s)
+	}
+}
+
+func (s *SetColumnsClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSetColumnsClause(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -48748,6 +50848,16 @@ func (s *UpdateStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *UpdateStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitUpdateStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -48936,6 +51046,16 @@ func (s *SqlTransactionStatementContext) EnterRule(listener antlr.ParseTreeListe
 func (s *SqlTransactionStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitSqlTransactionStatement(s)
+	}
+}
+
+func (s *SqlTransactionStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSqlTransactionStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -49134,6 +51254,16 @@ func (s *StartTransactionStatementContext) ExitRule(listener antlr.ParseTreeList
 	}
 }
 
+func (s *StartTransactionStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitStartTransactionStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -49321,6 +51451,16 @@ func (s *TransactionModeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TransactionModeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTransactionMode(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -49449,6 +51589,16 @@ func (s *TransactionAccessModeContext) EnterRule(listener antlr.ParseTreeListene
 func (s *TransactionAccessModeContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTransactionAccessMode(s)
+	}
+}
+
+func (s *TransactionAccessModeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTransactionAccessMode(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -49590,6 +51740,16 @@ func (s *IsolationLevelContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *IsolationLevelContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitIsolationLevel(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -49705,6 +51865,16 @@ func (s *LevelOfIsolationContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *LevelOfIsolationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitLevelOfIsolation(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -49810,6 +51980,16 @@ func (s *CommitStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *CommitStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCommitStatement(s)
+	}
+}
+
+func (s *CommitStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCommitStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -49939,6 +52119,16 @@ func (s *RollbackStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *RollbackStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitRollbackStatement(s)
+	}
+}
+
+func (s *RollbackStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRollbackStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -50088,6 +52278,16 @@ func (s *SetAutoCommitStatementContext) ExitRule(listener antlr.ParseTreeListene
 	}
 }
 
+func (s *SetAutoCommitStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSetAutoCommitStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -50215,6 +52415,16 @@ func (s *AbortTransactionStatementContext) EnterRule(listener antlr.ParseTreeLis
 func (s *AbortTransactionStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAbortTransactionStatement(s)
+	}
+}
+
+func (s *AbortTransactionStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAbortTransactionStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -50369,6 +52579,16 @@ func (s *AbortCompactionStatementContext) EnterRule(listener antlr.ParseTreeList
 func (s *AbortCompactionStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAbortCompactionStatement(s)
+	}
+}
+
+func (s *AbortCompactionStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAbortCompactionStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -50618,6 +52838,16 @@ func (s *MergeStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *MergeStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitMergeStatement(s)
+	}
+}
+
+func (s *MergeStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitMergeStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -50917,6 +53147,16 @@ func (s *WhenClausesContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *WhenClausesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWhenClauses(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -51173,6 +53413,16 @@ func (s *WhenNotMatchedClauseContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *WhenNotMatchedClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWhenNotMatchedClause(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -51413,6 +53663,16 @@ func (s *WhenMatchedAndClauseContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *WhenMatchedAndClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWhenMatchedAndClause(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -51575,6 +53835,16 @@ func (s *WhenMatchedThenClauseContext) ExitRule(listener antlr.ParseTreeListener
 	}
 }
 
+func (s *WhenMatchedThenClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWhenMatchedThenClause(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -51717,6 +53987,16 @@ func (s *UpdateOrDeleteContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *UpdateOrDeleteContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitUpdateOrDelete(s)
+	}
+}
+
+func (s *UpdateOrDeleteContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitUpdateOrDelete(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -51865,6 +54145,16 @@ func (s *KillQueryStatementContext) EnterRule(listener antlr.ParseTreeListener) 
 func (s *KillQueryStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitKillQueryStatement(s)
+	}
+}
+
+func (s *KillQueryStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitKillQueryStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -52032,6 +54322,16 @@ func (s *CompactionIdContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *CompactionIdContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCompactionId(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -52174,6 +54474,16 @@ func (s *CompactionPoolContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *CompactionPoolContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCompactionPool(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -52308,6 +54618,16 @@ func (s *CompactionTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *CompactionTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCompactionType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -52439,6 +54759,16 @@ func (s *CompactionStatusContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *CompactionStatusContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCompactionStatus(s)
+	}
+}
+
+func (s *CompactionStatusContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCompactionStatus(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -52712,6 +55042,16 @@ func (s *AlterStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *AlterStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatement(s)
+	}
+}
+
+func (s *AlterStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -53230,6 +55570,16 @@ func (s *AlterTableStatementSuffixContext) ExitRule(listener antlr.ParseTreeList
 	}
 }
 
+func (s *AlterTableStatementSuffixContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterTableStatementSuffix(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -53705,6 +56055,16 @@ func (s *AlterTblPartitionStatementSuffixContext) ExitRule(listener antlr.ParseT
 	}
 }
 
+func (s *AlterTblPartitionStatementSuffixContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterTblPartitionStatementSuffix(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -53951,6 +56311,16 @@ func (s *AlterStatementPartitionKeyTypeContext) ExitRule(listener antlr.ParseTre
 	}
 }
 
+func (s *AlterStatementPartitionKeyTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementPartitionKeyType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -54162,6 +56532,16 @@ func (s *AlterViewStatementSuffixContext) ExitRule(listener antlr.ParseTreeListe
 	}
 }
 
+func (s *AlterViewStatementSuffixContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterViewStatementSuffix(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -54333,6 +56713,16 @@ func (s *AlterMaterializedViewStatementSuffixContext) EnterRule(listener antlr.P
 func (s *AlterMaterializedViewStatementSuffixContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterMaterializedViewStatementSuffix(s)
+	}
+}
+
+func (s *AlterMaterializedViewStatementSuffixContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterMaterializedViewStatementSuffix(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -54512,6 +56902,16 @@ func (s *AlterMaterializedViewSuffixRewriteContext) ExitRule(listener antlr.Pars
 	}
 }
 
+func (s *AlterMaterializedViewSuffixRewriteContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterMaterializedViewSuffixRewrite(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -54638,6 +57038,16 @@ func (s *AlterMaterializedViewSuffixRebuildContext) EnterRule(listener antlr.Par
 func (s *AlterMaterializedViewSuffixRebuildContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterMaterializedViewSuffixRebuild(s)
+	}
+}
+
+func (s *AlterMaterializedViewSuffixRebuildContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterMaterializedViewSuffixRebuild(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -54787,6 +57197,16 @@ func (s *AlterDatabaseStatementSuffixContext) EnterRule(listener antlr.ParseTree
 func (s *AlterDatabaseStatementSuffixContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterDatabaseStatementSuffix(s)
+	}
+}
+
+func (s *AlterDatabaseStatementSuffixContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterDatabaseStatementSuffix(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -54970,6 +57390,16 @@ func (s *AlterDatabaseSuffixPropertiesContext) ExitRule(listener antlr.ParseTree
 	}
 }
 
+func (s *AlterDatabaseSuffixPropertiesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterDatabaseSuffixProperties(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -55144,6 +57574,16 @@ func (s *AlterDatabaseSuffixSetOwnerContext) EnterRule(listener antlr.ParseTreeL
 func (s *AlterDatabaseSuffixSetOwnerContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterDatabaseSuffixSetOwner(s)
+	}
+}
+
+func (s *AlterDatabaseSuffixSetOwnerContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterDatabaseSuffixSetOwner(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -55329,6 +57769,16 @@ func (s *AlterDatabaseSuffixSetLocationContext) EnterRule(listener antlr.ParseTr
 func (s *AlterDatabaseSuffixSetLocationContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterDatabaseSuffixSetLocation(s)
+	}
+}
+
+func (s *AlterDatabaseSuffixSetLocationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterDatabaseSuffixSetLocation(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -55524,6 +57974,16 @@ func (s *AlterDatabaseSuffixSetManagedLocationContext) ExitRule(listener antlr.P
 	}
 }
 
+func (s *AlterDatabaseSuffixSetManagedLocationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterDatabaseSuffixSetManagedLocation(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -55673,6 +58133,16 @@ func (s *AlterStatementSuffixRenameContext) EnterRule(listener antlr.ParseTreeLi
 func (s *AlterStatementSuffixRenameContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatementSuffixRename(s)
+	}
+}
+
+func (s *AlterStatementSuffixRenameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixRename(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -55868,6 +58338,16 @@ func (s *AlterStatementSuffixAddColContext) EnterRule(listener antlr.ParseTreeLi
 func (s *AlterStatementSuffixAddColContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatementSuffixAddCol(s)
+	}
+}
+
+func (s *AlterStatementSuffixAddColContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixAddCol(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -56100,6 +58580,16 @@ func (s *AlterStatementSuffixAddConstraintContext) ExitRule(listener antlr.Parse
 	}
 }
 
+func (s *AlterStatementSuffixAddConstraintContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixAddConstraint(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -56249,6 +58739,16 @@ func (s *AlterStatementSuffixUpdateColumnsContext) EnterRule(listener antlr.Pars
 func (s *AlterStatementSuffixUpdateColumnsContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatementSuffixUpdateColumns(s)
+	}
+}
+
+func (s *AlterStatementSuffixUpdateColumnsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixUpdateColumns(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -56414,6 +58914,16 @@ func (s *AlterStatementSuffixDropConstraintContext) EnterRule(listener antlr.Par
 func (s *AlterStatementSuffixDropConstraintContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatementSuffixDropConstraint(s)
+	}
+}
+
+func (s *AlterStatementSuffixDropConstraintContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixDropConstraint(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -56700,6 +59210,16 @@ func (s *AlterStatementSuffixRenameColContext) EnterRule(listener antlr.ParseTre
 func (s *AlterStatementSuffixRenameColContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatementSuffixRenameCol(s)
+	}
+}
+
+func (s *AlterStatementSuffixRenameColContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixRenameCol(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -57016,6 +59536,16 @@ func (s *AlterStatementSuffixUpdateStatsColContext) ExitRule(listener antlr.Pars
 	}
 }
 
+func (s *AlterStatementSuffixUpdateStatsColContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixUpdateStatsCol(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -57233,6 +59763,16 @@ func (s *AlterStatementSuffixUpdateStatsContext) ExitRule(listener antlr.ParseTr
 	}
 }
 
+func (s *AlterStatementSuffixUpdateStatsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixUpdateStats(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -57405,6 +59945,16 @@ func (s *AlterStatementChangeColPositionContext) EnterRule(listener antlr.ParseT
 func (s *AlterStatementChangeColPositionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatementChangeColPosition(s)
+	}
+}
+
+func (s *AlterStatementChangeColPositionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementChangeColPosition(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -57608,6 +60158,16 @@ func (s *AlterStatementSuffixAddPartitionsContext) ExitRule(listener antlr.Parse
 	}
 }
 
+func (s *AlterStatementSuffixAddPartitionsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixAddPartitions(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -57779,6 +60339,16 @@ func (s *AlterStatementSuffixAddPartitionsElementContext) ExitRule(listener antl
 	}
 }
 
+func (s *AlterStatementSuffixAddPartitionsElementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixAddPartitionsElement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -57935,6 +60505,16 @@ func (s *AlterStatementSuffixTouchContext) EnterRule(listener antlr.ParseTreeLis
 func (s *AlterStatementSuffixTouchContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatementSuffixTouch(s)
+	}
+}
+
+func (s *AlterStatementSuffixTouchContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixTouch(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -58108,6 +60688,16 @@ func (s *AlterStatementSuffixArchiveContext) ExitRule(listener antlr.ParseTreeLi
 	}
 }
 
+func (s *AlterStatementSuffixArchiveContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixArchive(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -58278,6 +60868,16 @@ func (s *AlterStatementSuffixUnArchiveContext) ExitRule(listener antlr.ParseTree
 	}
 }
 
+func (s *AlterStatementSuffixUnArchiveContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixUnArchive(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -58422,6 +61022,16 @@ func (s *PartitionLocationContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *PartitionLocationContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPartitionLocation(s)
+	}
+}
+
+func (s *PartitionLocationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPartitionLocation(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -58638,6 +61248,16 @@ func (s *AlterStatementSuffixDropPartitionsContext) EnterRule(listener antlr.Par
 func (s *AlterStatementSuffixDropPartitionsContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatementSuffixDropPartitions(s)
+	}
+}
+
+func (s *AlterStatementSuffixDropPartitionsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixDropPartitions(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -58889,6 +61509,16 @@ func (s *AlterStatementSuffixPropertiesContext) ExitRule(listener antlr.ParseTre
 	}
 }
 
+func (s *AlterStatementSuffixPropertiesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixProperties(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -59100,6 +61730,16 @@ func (s *AlterViewSuffixPropertiesContext) EnterRule(listener antlr.ParseTreeLis
 func (s *AlterViewSuffixPropertiesContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterViewSuffixProperties(s)
+	}
+}
+
+func (s *AlterViewSuffixPropertiesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterViewSuffixProperties(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -59327,6 +61967,16 @@ func (s *AlterStatementSuffixSerdePropertiesContext) EnterRule(listener antlr.Pa
 func (s *AlterStatementSuffixSerdePropertiesContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatementSuffixSerdeProperties(s)
+	}
+}
+
+func (s *AlterStatementSuffixSerdePropertiesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixSerdeProperties(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -59582,6 +62232,16 @@ func (s *TablePartitionPrefixContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *TablePartitionPrefixContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTablePartitionPrefix(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -59717,6 +62377,16 @@ func (s *AlterStatementSuffixFileFormatContext) EnterRule(listener antlr.ParseTr
 func (s *AlterStatementSuffixFileFormatContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatementSuffixFileFormat(s)
+	}
+}
+
+func (s *AlterStatementSuffixFileFormatContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixFileFormat(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -59859,6 +62529,16 @@ func (s *AlterStatementSuffixClusterbySortbyContext) EnterRule(listener antlr.Pa
 func (s *AlterStatementSuffixClusterbySortbyContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatementSuffixClusterbySortby(s)
+	}
+}
+
+func (s *AlterStatementSuffixClusterbySortbyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixClusterbySortby(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -60027,6 +62707,16 @@ func (s *AlterTblPartitionStatementSuffixSkewedLocationContext) ExitRule(listene
 	}
 }
 
+func (s *AlterTblPartitionStatementSuffixSkewedLocationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterTblPartitionStatementSuffixSkewedLocation(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -60169,6 +62859,16 @@ func (s *SkewedLocationsContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *SkewedLocationsContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitSkewedLocations(s)
+	}
+}
+
+func (s *SkewedLocationsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSkewedLocations(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -60332,6 +63032,16 @@ func (s *SkewedLocationsListContext) EnterRule(listener antlr.ParseTreeListener)
 func (s *SkewedLocationsListContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitSkewedLocationsList(s)
+	}
+}
+
+func (s *SkewedLocationsListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSkewedLocationsList(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -60518,6 +63228,16 @@ func (s *SkewedLocationMapContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SkewedLocationMapContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSkewedLocationMap(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -60662,6 +63382,16 @@ func (s *AlterStatementSuffixLocationContext) EnterRule(listener antlr.ParseTree
 func (s *AlterStatementSuffixLocationContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatementSuffixLocation(s)
+	}
+}
+
+func (s *AlterStatementSuffixLocationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixLocation(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -60823,6 +63553,16 @@ func (s *AlterStatementSuffixSkewedbyContext) EnterRule(listener antlr.ParseTree
 func (s *AlterStatementSuffixSkewedbyContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatementSuffixSkewedby(s)
+	}
+}
+
+func (s *AlterStatementSuffixSkewedbyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixSkewedby(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -61040,6 +63780,16 @@ func (s *AlterStatementSuffixExchangePartitionContext) ExitRule(listener antlr.P
 	}
 }
 
+func (s *AlterStatementSuffixExchangePartitionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixExchangePartition(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -61190,6 +63940,16 @@ func (s *AlterStatementSuffixRenamePartContext) EnterRule(listener antlr.ParseTr
 func (s *AlterStatementSuffixRenamePartContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatementSuffixRenamePart(s)
+	}
+}
+
+func (s *AlterStatementSuffixRenamePartContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixRenamePart(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -61402,6 +64162,16 @@ func (s *AlterStatementSuffixStatsPartContext) ExitRule(listener antlr.ParseTree
 	}
 }
 
+func (s *AlterStatementSuffixStatsPartContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixStatsPart(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -61592,6 +64362,16 @@ func (s *AlterStatementSuffixMergeFilesContext) ExitRule(listener antlr.ParseTre
 	}
 }
 
+func (s *AlterStatementSuffixMergeFilesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixMergeFiles(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -61720,6 +64500,16 @@ func (s *AlterStatementSuffixBucketNumContext) ExitRule(listener antlr.ParseTree
 	}
 }
 
+func (s *AlterStatementSuffixBucketNumContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixBucketNum(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -61844,6 +64634,16 @@ func (s *BlockingContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *BlockingContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitBlocking(s)
+	}
+}
+
+func (s *BlockingContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitBlocking(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -61975,6 +64775,16 @@ func (s *CompactPoolContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *CompactPoolContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCompactPool(s)
+	}
+}
+
+func (s *CompactPoolContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCompactPool(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -62192,6 +65002,16 @@ func (s *AlterStatementSuffixCompactContext) EnterRule(listener antlr.ParseTreeL
 func (s *AlterStatementSuffixCompactContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatementSuffixCompact(s)
+	}
+}
+
+func (s *AlterStatementSuffixCompactContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixCompact(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -62417,6 +65237,16 @@ func (s *AlterStatementSuffixSetOwnerContext) ExitRule(listener antlr.ParseTreeL
 	}
 }
 
+func (s *AlterStatementSuffixSetOwnerContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixSetOwner(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -62581,6 +65411,16 @@ func (s *AlterStatementSuffixSetPartSpecContext) EnterRule(listener antlr.ParseT
 func (s *AlterStatementSuffixSetPartSpecContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatementSuffixSetPartSpec(s)
+	}
+}
+
+func (s *AlterStatementSuffixSetPartSpecContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixSetPartSpec(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -62796,6 +65636,16 @@ func (s *AlterStatementSuffixExecuteContext) EnterRule(listener antlr.ParseTreeL
 func (s *AlterStatementSuffixExecuteContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterStatementSuffixExecute(s)
+	}
+}
+
+func (s *AlterStatementSuffixExecuteContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterStatementSuffixExecute(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -63142,6 +65992,16 @@ func (s *FileFormatContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *FileFormatContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitFileFormat(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -63414,6 +66274,16 @@ func (s *AlterDataConnectorStatementSuffixContext) ExitRule(listener antlr.Parse
 	}
 }
 
+func (s *AlterDataConnectorStatementSuffixContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterDataConnectorStatementSuffix(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -63594,6 +66464,16 @@ func (s *AlterDataConnectorSuffixPropertiesContext) ExitRule(listener antlr.Pars
 	}
 }
 
+func (s *AlterDataConnectorSuffixPropertiesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterDataConnectorSuffixProperties(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -63768,6 +66648,16 @@ func (s *AlterDataConnectorSuffixSetOwnerContext) EnterRule(listener antlr.Parse
 func (s *AlterDataConnectorSuffixSetOwnerContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterDataConnectorSuffixSetOwner(s)
+	}
+}
+
+func (s *AlterDataConnectorSuffixSetOwnerContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterDataConnectorSuffixSetOwner(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -63948,6 +66838,16 @@ func (s *AlterDataConnectorSuffixSetUrlContext) EnterRule(listener antlr.ParseTr
 func (s *AlterDataConnectorSuffixSetUrlContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterDataConnectorSuffixSetUrl(s)
+	}
+}
+
+func (s *AlterDataConnectorSuffixSetUrlContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterDataConnectorSuffixSetUrl(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -64163,6 +67063,16 @@ func (s *LikeTableOrFileContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *LikeTableOrFileContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitLikeTableOrFile(s)
+	}
+}
+
+func (s *LikeTableOrFileContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitLikeTableOrFile(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -64668,6 +67578,16 @@ func (s *CreateTableStatementContext) EnterRule(listener antlr.ParseTreeListener
 func (s *CreateTableStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCreateTableStatement(s)
+	}
+}
+
+func (s *CreateTableStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreateTableStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -65608,6 +68528,16 @@ func (s *CreateDataConnectorStatementContext) ExitRule(listener antlr.ParseTreeL
 	}
 }
 
+func (s *CreateDataConnectorStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreateDataConnectorStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -65822,6 +68752,16 @@ func (s *DataConnectorCommentContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *DataConnectorCommentContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDataConnectorComment(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -65953,6 +68893,16 @@ func (s *DataConnectorUrlContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *DataConnectorUrlContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitDataConnectorUrl(s)
+	}
+}
+
+func (s *DataConnectorUrlContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDataConnectorUrl(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -66090,6 +69040,16 @@ func (s *DataConnectorTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *DataConnectorTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDataConnectorType(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -66223,6 +69183,16 @@ func (s *DcPropertiesContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *DcPropertiesContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitDcProperties(s)
+	}
+}
+
+func (s *DcPropertiesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDcProperties(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -66380,6 +69350,16 @@ func (s *DropDataConnectorStatementContext) ExitRule(listener antlr.ParseTreeLis
 	}
 }
 
+func (s *DropDataConnectorStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDropDataConnectorStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -66531,6 +69511,16 @@ func (s *TableAllColumnsContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *TableAllColumnsContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTableAllColumns(s)
+	}
+}
+
+func (s *TableAllColumnsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableAllColumns(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -66687,6 +69677,16 @@ func (s *TableOrColumnContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TableOrColumnContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableOrColumn(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -66783,6 +69783,16 @@ func (s *DefaultValueContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *DefaultValueContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitDefaultValue(s)
+	}
+}
+
+func (s *DefaultValueContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDefaultValue(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -66934,6 +69944,16 @@ func (s *ExpressionListContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ExpressionListContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitExpressionList(s)
+	}
+}
+
+func (s *ExpressionListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitExpressionList(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -67116,6 +70136,16 @@ func (s *AliasListContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *AliasListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAliasList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -67261,6 +70291,16 @@ func (s *FromClauseContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *FromClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitFromClause(s)
+	}
+}
+
+func (s *FromClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitFromClause(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -67450,6 +70490,16 @@ func (s *FromSourceContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *FromSourceContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitFromSource(s)
+	}
+}
+
+func (s *FromSourceContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitFromSource(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -67740,6 +70790,16 @@ func (s *AtomjoinSourceContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *AtomjoinSourceContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAtomjoinSource(s)
+	}
+}
+
+func (s *AtomjoinSourceContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAtomjoinSource(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -68219,6 +71279,16 @@ func (s *JoinSourceContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *JoinSourceContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitJoinSource(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -68494,6 +71564,16 @@ func (s *JoinSourcePartContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *JoinSourcePartContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitJoinSourcePart(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -68690,6 +71770,16 @@ func (s *UniqueJoinSourceContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *UniqueJoinSourceContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitUniqueJoinSource(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -68836,6 +71926,16 @@ func (s *UniqueJoinExprContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *UniqueJoinExprContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitUniqueJoinExpr(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -68948,6 +72048,16 @@ func (s *UniqueJoinTokenContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *UniqueJoinTokenContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitUniqueJoinToken(s)
+	}
+}
+
+func (s *UniqueJoinTokenContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitUniqueJoinToken(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -69096,6 +72206,16 @@ func (s *JoinTokenContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *JoinTokenContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitJoinToken(s)
+	}
+}
+
+func (s *JoinTokenContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitJoinToken(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -69471,6 +72591,16 @@ func (s *LateralViewContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *LateralViewContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitLateralView(s)
+	}
+}
+
+func (s *LateralViewContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitLateralView(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -69923,6 +73053,16 @@ func (s *TableAliasContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TableAliasContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableAlias(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -70168,6 +73308,16 @@ func (s *TableBucketSampleContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *TableBucketSampleContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTableBucketSample(s)
+	}
+}
+
+func (s *TableBucketSampleContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableBucketSample(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -70431,6 +73581,16 @@ func (s *SplitSampleContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SplitSampleContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSplitSample(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -70623,6 +73783,16 @@ func (s *TableSampleContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *TableSampleContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTableSample(s)
+	}
+}
+
+func (s *TableSampleContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableSample(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -70885,6 +74055,16 @@ func (s *TableSourceContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *TableSourceContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTableSource(s)
+	}
+}
+
+func (s *TableSourceContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableSource(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -71160,6 +74340,16 @@ func (s *AsOfClauseContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *AsOfClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAsOfClause(s)
+	}
+}
+
+func (s *AsOfClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAsOfClause(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -71447,6 +74637,16 @@ func (s *UniqueJoinTableSourceContext) ExitRule(listener antlr.ParseTreeListener
 	}
 }
 
+func (s *UniqueJoinTableSourceContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitUniqueJoinTableSource(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -71694,6 +74894,16 @@ func (s *TableNameContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TableNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableName(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -71930,6 +75140,16 @@ func (s *ViewNameContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ViewNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitViewName(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -72099,6 +75319,16 @@ func (s *SubQuerySourceContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *SubQuerySourceContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitSubQuerySource(s)
+	}
+}
+
+func (s *SubQuerySourceContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSubQuerySource(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -72322,6 +75552,16 @@ func (s *PartitioningSpecContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PartitioningSpecContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPartitioningSpec(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -72542,6 +75782,16 @@ func (s *PartitionTableFunctionSourceContext) EnterRule(listener antlr.ParseTree
 func (s *PartitionTableFunctionSourceContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPartitionTableFunctionSource(s)
+	}
+}
+
+func (s *PartitionTableFunctionSourceContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPartitionTableFunctionSource(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -72879,6 +76129,16 @@ func (s *PartitionedTableFunctionContext) ExitRule(listener antlr.ParseTreeListe
 	}
 }
 
+func (s *PartitionedTableFunctionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPartitionedTableFunction(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -73162,6 +76422,16 @@ func (s *WhereClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *WhereClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWhereClause(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -73281,6 +76551,16 @@ func (s *SearchConditionContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SearchConditionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSearchCondition(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -73389,6 +76669,16 @@ func (s *ValuesSourceContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ValuesSourceContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitValuesSource(s)
+	}
+}
+
+func (s *ValuesSourceContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitValuesSource(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -73505,6 +76795,16 @@ func (s *ValuesClauseContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ValuesClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitValuesClause(s)
+	}
+}
+
+func (s *ValuesClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitValuesClause(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -73677,6 +76977,16 @@ func (s *ValuesTableConstructorContext) EnterRule(listener antlr.ParseTreeListen
 func (s *ValuesTableConstructorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitValuesTableConstructor(s)
+	}
+}
+
+func (s *ValuesTableConstructorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitValuesTableConstructor(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -73872,6 +77182,16 @@ func (s *ValueRowConstructorContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
+func (s *ValueRowConstructorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitValueRowConstructor(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -73990,6 +77310,16 @@ func (s *FirstValueRowConstructorContext) EnterRule(listener antlr.ParseTreeList
 func (s *FirstValueRowConstructorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitFirstValueRowConstructor(s)
+	}
+}
+
+func (s *FirstValueRowConstructorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitFirstValueRowConstructor(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -74217,6 +77547,16 @@ func (s *VirtualTableSourceContext) EnterRule(listener antlr.ParseTreeListener) 
 func (s *VirtualTableSourceContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitVirtualTableSource(s)
+	}
+}
+
+func (s *VirtualTableSourceContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitVirtualTableSource(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -74507,6 +77847,16 @@ func (s *SelectClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SelectClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSelectClause(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -74707,6 +78057,16 @@ func (s *All_distinctContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *All_distinctContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAll_distinct(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -74860,6 +78220,16 @@ func (s *SelectListContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *SelectListContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitSelectList(s)
+	}
+}
+
+func (s *SelectListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSelectList(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -75155,6 +78525,16 @@ func (s *SelectTrfmClauseContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *SelectTrfmClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitSelectTrfmClause(s)
+	}
+}
+
+func (s *SelectTrfmClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSelectTrfmClause(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -75485,6 +78865,16 @@ func (s *SelectItemContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *SelectItemContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitSelectItem(s)
+	}
+}
+
+func (s *SelectItemContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSelectItem(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -75860,6 +79250,16 @@ func (s *TrfmClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TrfmClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTrfmClause(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -76117,6 +79517,16 @@ func (s *SelectExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SelectExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSelectExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -76280,6 +79690,16 @@ func (s *SelectExpressionListContext) EnterRule(listener antlr.ParseTreeListener
 func (s *SelectExpressionListContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitSelectExpressionList(s)
+	}
+}
+
+func (s *SelectExpressionListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSelectExpressionList(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -76467,6 +79887,16 @@ func (s *Window_clauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *Window_clauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWindow_clause(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -76640,6 +80070,16 @@ func (s *Window_defnContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *Window_defnContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWindow_defn(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -76804,6 +80244,16 @@ func (s *Window_specificationContext) EnterRule(listener antlr.ParseTreeListener
 func (s *Window_specificationContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitWindow_specification(s)
+	}
+}
+
+func (s *Window_specificationContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWindow_specification(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -77014,6 +80464,16 @@ func (s *Window_frameContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *Window_frameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWindow_frame(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -77202,6 +80662,16 @@ func (s *Window_range_expressionContext) EnterRule(listener antlr.ParseTreeListe
 func (s *Window_range_expressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitWindow_range_expression(s)
+	}
+}
+
+func (s *Window_range_expressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWindow_range_expression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -77424,6 +80894,16 @@ func (s *Window_value_expressionContext) ExitRule(listener antlr.ParseTreeListen
 	}
 }
 
+func (s *Window_value_expressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWindow_value_expression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -77590,6 +81070,16 @@ func (s *Window_frame_start_boundaryContext) EnterRule(listener antlr.ParseTreeL
 func (s *Window_frame_start_boundaryContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitWindow_frame_start_boundary(s)
+	}
+}
+
+func (s *Window_frame_start_boundaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWindow_frame_start_boundary(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -77783,6 +81273,16 @@ func (s *Window_frame_boundaryContext) ExitRule(listener antlr.ParseTreeListener
 	}
 }
 
+func (s *Window_frame_boundaryContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWindow_frame_boundary(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -77958,6 +81458,16 @@ func (s *GroupByClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *GroupByClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitGroupByClause(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -78119,6 +81629,16 @@ func (s *Groupby_expressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *Groupby_expressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitGroupby_expression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -78247,6 +81767,16 @@ func (s *GroupByEmptyContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *GroupByEmptyContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitGroupByEmpty(s)
+	}
+}
+
+func (s *GroupByEmptyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitGroupByEmpty(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -78452,6 +81982,16 @@ func (s *RollupStandardContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *RollupStandardContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitRollupStandard(s)
+	}
+}
+
+func (s *RollupStandardContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRollupStandard(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -78794,6 +82334,16 @@ func (s *RollupOldSyntaxContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *RollupOldSyntaxContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRollupOldSyntax(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -79058,6 +82608,16 @@ func (s *GroupingSetExpressionContext) ExitRule(listener antlr.ParseTreeListener
 	}
 }
 
+func (s *GroupingSetExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitGroupingSetExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -79234,6 +82794,16 @@ func (s *GroupingSetExpressionMultipleContext) ExitRule(listener antlr.ParseTree
 	}
 }
 
+func (s *GroupingSetExpressionMultipleContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitGroupingSetExpressionMultiple(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -79404,6 +82974,16 @@ func (s *GroupingExpressionSingleContext) ExitRule(listener antlr.ParseTreeListe
 	}
 }
 
+func (s *GroupingExpressionSingleContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitGroupingExpressionSingle(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -79517,6 +83097,16 @@ func (s *HavingClauseContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *HavingClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitHavingClause(s)
+	}
+}
+
+func (s *HavingClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitHavingClause(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -79644,6 +83234,16 @@ func (s *QualifyClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *QualifyClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitQualifyClause(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -79760,6 +83360,16 @@ func (s *HavingConditionContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *HavingConditionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitHavingCondition(s)
+	}
+}
+
+func (s *HavingConditionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitHavingCondition(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -79881,6 +83491,16 @@ func (s *ExpressionsInParenthesisContext) EnterRule(listener antlr.ParseTreeList
 func (s *ExpressionsInParenthesisContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitExpressionsInParenthesis(s)
+	}
+}
+
+func (s *ExpressionsInParenthesisContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitExpressionsInParenthesis(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -80051,6 +83671,16 @@ func (s *ExpressionsNotInParenthesisContext) EnterRule(listener antlr.ParseTreeL
 func (s *ExpressionsNotInParenthesisContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitExpressionsNotInParenthesis(s)
+	}
+}
+
+func (s *ExpressionsNotInParenthesisContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitExpressionsNotInParenthesis(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -80226,6 +83856,16 @@ func (s *ExpressionPartContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ExpressionPartContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitExpressionPart(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -80379,6 +84019,16 @@ func (s *ExpressionOrDefaultContext) EnterRule(listener antlr.ParseTreeListener)
 func (s *ExpressionOrDefaultContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitExpressionOrDefault(s)
+	}
+}
+
+func (s *ExpressionOrDefaultContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitExpressionOrDefault(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -80613,6 +84263,16 @@ func (s *FirstExpressionsWithAliasContext) ExitRule(listener antlr.ParseTreeList
 	}
 }
 
+func (s *FirstExpressionsWithAliasContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitFirstExpressionsWithAlias(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -80835,6 +84495,16 @@ func (s *ExpressionWithAliasContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
+func (s *ExpressionWithAliasContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitExpressionWithAlias(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -81000,6 +84670,16 @@ func (s *ExpressionsContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ExpressionsContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitExpressions(s)
+	}
+}
+
+func (s *ExpressionsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitExpressions(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -81176,6 +84856,16 @@ func (s *ColumnRefOrderInParenthesisContext) EnterRule(listener antlr.ParseTreeL
 func (s *ColumnRefOrderInParenthesisContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitColumnRefOrderInParenthesis(s)
+	}
+}
+
+func (s *ColumnRefOrderInParenthesisContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnRefOrderInParenthesis(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -81374,6 +85064,16 @@ func (s *ColumnRefOrderNotInParenthesisContext) ExitRule(listener antlr.ParseTre
 	}
 }
 
+func (s *ColumnRefOrderNotInParenthesisContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitColumnRefOrderNotInParenthesis(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -81563,6 +85263,16 @@ func (s *OrderByClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *OrderByClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitOrderByClause(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -81732,6 +85442,16 @@ func (s *ClusterByClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ClusterByClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitClusterByClause(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -81869,6 +85589,16 @@ func (s *PartitionByClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PartitionByClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPartitionByClause(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -82003,6 +85733,16 @@ func (s *DistributeByClauseContext) EnterRule(listener antlr.ParseTreeListener) 
 func (s *DistributeByClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitDistributeByClause(s)
+	}
+}
+
+func (s *DistributeByClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDistributeByClause(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -82157,6 +85897,16 @@ func (s *SortByClauseContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *SortByClauseContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitSortByClause(s)
+	}
+}
+
+func (s *SortByClauseContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSortByClause(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -82416,6 +86166,16 @@ func (s *TrimFunctionContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *TrimFunctionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTrimFunction(s)
+	}
+}
+
+func (s *TrimFunctionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTrimFunction(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -82890,6 +86650,16 @@ func (s *Function_Context) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *Function_Context) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitFunction_(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -83271,6 +87041,16 @@ func (s *Null_treatmentContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *Null_treatmentContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitNull_treatment(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -83442,6 +87222,16 @@ func (s *FunctionNameContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *FunctionNameContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitFunctionName(s)
+	}
+}
+
+func (s *FunctionNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitFunctionName(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -83652,6 +87442,16 @@ func (s *CastExpressionContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *CastExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCastExpression(s)
+	}
+}
+
+func (s *CastExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCastExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -83896,6 +87696,16 @@ func (s *CaseExpressionContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *CaseExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCaseExpression(s)
+	}
+}
+
+func (s *CaseExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCaseExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -84154,6 +87964,16 @@ func (s *WhenExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *WhenExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWhenExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -84396,6 +88216,16 @@ func (s *FloorExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *FloorExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitFloorExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -84583,6 +88413,16 @@ func (s *FloorDateQualifiersContext) ExitRule(listener antlr.ParseTreeListener) 
 	}
 }
 
+func (s *FloorDateQualifiersContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitFloorDateQualifiers(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -84752,6 +88592,16 @@ func (s *ExtractExpressionContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ExtractExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitExtractExpression(s)
+	}
+}
+
+func (s *ExtractExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitExtractExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -84931,6 +88781,16 @@ func (s *TimeQualifiersContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *TimeQualifiersContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTimeQualifiers(s)
+	}
+}
+
+func (s *TimeQualifiersContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTimeQualifiers(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -85198,6 +89058,16 @@ func (s *ConstantContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ConstantContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitConstant(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -85451,6 +89321,16 @@ func (s *PrepareStmtParamContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PrepareStmtParamContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrepareStmtParam(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -85551,6 +89431,16 @@ func (s *ParameterIdxContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ParameterIdxContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitParameterIdx(s)
+	}
+}
+
+func (s *ParameterIdxContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitParameterIdx(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -85659,6 +89549,16 @@ func (s *StringLiteralSequenceContext) EnterRule(listener antlr.ParseTreeListene
 func (s *StringLiteralSequenceContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitStringLiteralSequence(s)
+	}
+}
+
+func (s *StringLiteralSequenceContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitStringLiteralSequence(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -85824,6 +89724,16 @@ func (s *CharSetStringLiteralContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *CharSetStringLiteralContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCharSetStringLiteral(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -85948,6 +89858,16 @@ func (s *DateLiteralContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *DateLiteralContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitDateLiteral(s)
+	}
+}
+
+func (s *DateLiteralContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDateLiteral(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -86098,6 +90018,16 @@ func (s *TimestampLiteralContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TimestampLiteralContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTimestampLiteral(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -86240,6 +90170,16 @@ func (s *TimestampLocalTZLiteralContext) ExitRule(listener antlr.ParseTreeListen
 	}
 }
 
+func (s *TimestampLocalTZLiteralContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTimestampLocalTZLiteral(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -86353,6 +90293,16 @@ func (s *IntervalValueContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *IntervalValueContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitIntervalValue(s)
+	}
+}
+
+func (s *IntervalValueContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitIntervalValue(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -86516,6 +90466,16 @@ func (s *IntervalLiteralContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *IntervalLiteralContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitIntervalLiteral(s)
+	}
+}
+
+func (s *IntervalLiteralContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitIntervalLiteral(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -86725,6 +90685,16 @@ func (s *IntervalExpressionContext) EnterRule(listener antlr.ParseTreeListener) 
 func (s *IntervalExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitIntervalExpression(s)
+	}
+}
+
+func (s *IntervalExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitIntervalExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -86969,6 +90939,16 @@ func (s *IntervalQualifiersContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *IntervalQualifiersContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitIntervalQualifiers(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -87208,6 +91188,16 @@ func (s *ExpressionContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitExpression(s)
+	}
+}
+
+func (s *ExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -87489,6 +91479,16 @@ func (s *AtomExpressionContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *AtomExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAtomExpression(s)
+	}
+}
+
+func (s *AtomExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAtomExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -87810,6 +91810,16 @@ func (s *PrecedenceFieldExpressionContext) ExitRule(listener antlr.ParseTreeList
 	}
 }
 
+func (s *PrecedenceFieldExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceFieldExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -87988,6 +91998,16 @@ func (s *PrecedenceUnaryOperatorContext) ExitRule(listener antlr.ParseTreeListen
 	}
 }
 
+func (s *PrecedenceUnaryOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceUnaryOperator(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -88151,6 +92171,16 @@ func (s *PrecedenceUnaryPrefixExpressionContext) ExitRule(listener antlr.ParseTr
 	}
 }
 
+func (s *PrecedenceUnaryPrefixExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceUnaryPrefixExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -88271,6 +92301,16 @@ func (s *PrecedenceBitwiseXorOperatorContext) EnterRule(listener antlr.ParseTree
 func (s *PrecedenceBitwiseXorOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedenceBitwiseXorOperator(s)
+	}
+}
+
+func (s *PrecedenceBitwiseXorOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceBitwiseXorOperator(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -88458,6 +92498,16 @@ func (s *PrecedenceBitwiseXorExpressionContext) ExitRule(listener antlr.ParseTre
 	}
 }
 
+func (s *PrecedenceBitwiseXorExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceBitwiseXorExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -88597,6 +92647,16 @@ func (s *PrecedenceStarOperatorContext) EnterRule(listener antlr.ParseTreeListen
 func (s *PrecedenceStarOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedenceStarOperator(s)
+	}
+}
+
+func (s *PrecedenceStarOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceStarOperator(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -88789,6 +92849,16 @@ func (s *PrecedenceStarExpressionContext) ExitRule(listener antlr.ParseTreeListe
 	}
 }
 
+func (s *PrecedenceStarExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceStarExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -88918,6 +92988,16 @@ func (s *PrecedencePlusOperatorContext) EnterRule(listener antlr.ParseTreeListen
 func (s *PrecedencePlusOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedencePlusOperator(s)
+	}
+}
+
+func (s *PrecedencePlusOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedencePlusOperator(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -89110,6 +93190,16 @@ func (s *PrecedencePlusExpressionContext) ExitRule(listener antlr.ParseTreeListe
 	}
 }
 
+func (s *PrecedencePlusExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedencePlusExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -89234,6 +93324,16 @@ func (s *PrecedenceConcatenateOperatorContext) EnterRule(listener antlr.ParseTre
 func (s *PrecedenceConcatenateOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedenceConcatenateOperator(s)
+	}
+}
+
+func (s *PrecedenceConcatenateOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceConcatenateOperator(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -89436,6 +93536,16 @@ func (s *PrecedenceConcatenateExpressionContext) ExitRule(listener antlr.ParseTr
 	}
 }
 
+func (s *PrecedenceConcatenateExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceConcatenateExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -89564,6 +93674,16 @@ func (s *PrecedenceAmpersandOperatorContext) EnterRule(listener antlr.ParseTreeL
 func (s *PrecedenceAmpersandOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedenceAmpersandOperator(s)
+	}
+}
+
+func (s *PrecedenceAmpersandOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceAmpersandOperator(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -89751,6 +93871,16 @@ func (s *PrecedenceAmpersandExpressionContext) ExitRule(listener antlr.ParseTree
 	}
 }
 
+func (s *PrecedenceAmpersandExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceAmpersandExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -89875,6 +94005,16 @@ func (s *PrecedenceBitwiseOrOperatorContext) EnterRule(listener antlr.ParseTreeL
 func (s *PrecedenceBitwiseOrOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedenceBitwiseOrOperator(s)
+	}
+}
+
+func (s *PrecedenceBitwiseOrOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceBitwiseOrOperator(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -90062,6 +94202,16 @@ func (s *PrecedenceBitwiseOrExpressionContext) ExitRule(listener antlr.ParseTree
 	}
 }
 
+func (s *PrecedenceBitwiseOrExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceBitwiseOrExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -90196,6 +94346,16 @@ func (s *PrecedenceRegexpOperatorContext) EnterRule(listener antlr.ParseTreeList
 func (s *PrecedenceRegexpOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedenceRegexpOperator(s)
+	}
+}
+
+func (s *PrecedenceRegexpOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceRegexpOperator(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -90336,6 +94496,16 @@ func (s *PrecedenceSimilarOperatorContext) EnterRule(listener antlr.ParseTreeLis
 func (s *PrecedenceSimilarOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedenceSimilarOperator(s)
+	}
+}
+
+func (s *PrecedenceSimilarOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceSimilarOperator(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -90522,6 +94692,16 @@ func (s *SubQueryExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SubQueryExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSubQueryExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -90668,6 +94848,16 @@ func (s *PrecedenceSimilarExpressionContext) EnterRule(listener antlr.ParseTreeL
 func (s *PrecedenceSimilarExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedenceSimilarExpression(s)
+	}
+}
+
+func (s *PrecedenceSimilarExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceSimilarExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -90852,6 +95042,16 @@ func (s *PrecedenceSimilarExpressionMainContext) EnterRule(listener antlr.ParseT
 func (s *PrecedenceSimilarExpressionMainContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedenceSimilarExpressionMain(s)
+	}
+}
+
+func (s *PrecedenceSimilarExpressionMainContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceSimilarExpressionMain(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -91055,6 +95255,16 @@ func (s *PrecedenceSimilarExpressionPartContext) EnterRule(listener antlr.ParseT
 func (s *PrecedenceSimilarExpressionPartContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedenceSimilarExpressionPart(s)
+	}
+}
+
+func (s *PrecedenceSimilarExpressionPartContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceSimilarExpressionPart(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -91356,6 +95566,16 @@ func (s *PrecedenceSimilarExpressionAtomContext) ExitRule(listener antlr.ParseTr
 	}
 }
 
+func (s *PrecedenceSimilarExpressionAtomContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceSimilarExpressionAtom(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -91600,6 +95820,16 @@ func (s *PrecedenceSimilarExpressionQuantifierPredicateContext) ExitRule(listene
 	}
 }
 
+func (s *PrecedenceSimilarExpressionQuantifierPredicateContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceSimilarExpressionQuantifierPredicate(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -91714,6 +95944,16 @@ func (s *QuantifierTypeContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *QuantifierTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitQuantifierType(s)
+	}
+}
+
+func (s *QuantifierTypeContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitQuantifierType(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -91866,6 +96106,16 @@ func (s *PrecedenceSimilarExpressionInContext) EnterRule(listener antlr.ParseTre
 func (s *PrecedenceSimilarExpressionInContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedenceSimilarExpressionIn(s)
+	}
+}
+
+func (s *PrecedenceSimilarExpressionInContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceSimilarExpressionIn(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -92052,6 +96302,16 @@ func (s *PrecedenceSimilarExpressionPartNotContext) ExitRule(listener antlr.Pars
 	}
 }
 
+func (s *PrecedenceSimilarExpressionPartNotContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceSimilarExpressionPartNot(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -92185,6 +96445,16 @@ func (s *PrecedenceDistinctOperatorContext) EnterRule(listener antlr.ParseTreeLi
 func (s *PrecedenceDistinctOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedenceDistinctOperator(s)
+	}
+}
+
+func (s *PrecedenceDistinctOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceDistinctOperator(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -92334,6 +96604,16 @@ func (s *PrecedenceEqualOperatorContext) EnterRule(listener antlr.ParseTreeListe
 func (s *PrecedenceEqualOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedenceEqualOperator(s)
+	}
+}
+
+func (s *PrecedenceEqualOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceEqualOperator(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -92712,6 +96992,16 @@ func (s *PrecedenceEqualExpressionContext) ExitRule(listener antlr.ParseTreeList
 	}
 }
 
+func (s *PrecedenceEqualExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceEqualExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -92904,6 +97194,16 @@ func (s *IsConditionContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *IsConditionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitIsCondition(s)
+	}
+}
+
+func (s *IsConditionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitIsCondition(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -93186,6 +97486,16 @@ func (s *PrecedenceUnarySuffixExpressionContext) ExitRule(listener antlr.ParseTr
 	}
 }
 
+func (s *PrecedenceUnarySuffixExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceUnarySuffixExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -93310,6 +97620,16 @@ func (s *PrecedenceNotOperatorContext) EnterRule(listener antlr.ParseTreeListene
 func (s *PrecedenceNotOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedenceNotOperator(s)
+	}
+}
+
+func (s *PrecedenceNotOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceNotOperator(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -93471,6 +97791,16 @@ func (s *PrecedenceNotExpressionContext) ExitRule(listener antlr.ParseTreeListen
 	}
 }
 
+func (s *PrecedenceNotExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceNotExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -93591,6 +97921,16 @@ func (s *PrecedenceAndOperatorContext) EnterRule(listener antlr.ParseTreeListene
 func (s *PrecedenceAndOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedenceAndOperator(s)
+	}
+}
+
+func (s *PrecedenceAndOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceAndOperator(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -93778,6 +98118,16 @@ func (s *PrecedenceAndExpressionContext) ExitRule(listener antlr.ParseTreeListen
 	}
 }
 
+func (s *PrecedenceAndExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceAndExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -93902,6 +98252,16 @@ func (s *PrecedenceOrOperatorContext) EnterRule(listener antlr.ParseTreeListener
 func (s *PrecedenceOrOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrecedenceOrOperator(s)
+	}
+}
+
+func (s *PrecedenceOrOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceOrOperator(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -94089,6 +98449,16 @@ func (s *PrecedenceOrExpressionContext) ExitRule(listener antlr.ParseTreeListene
 	}
 }
 
+func (s *PrecedenceOrExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrecedenceOrExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -94221,6 +98591,16 @@ func (s *BooleanValueContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *BooleanValueContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitBooleanValue(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -94331,6 +98711,16 @@ func (s *BooleanValueTokContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *BooleanValueTokContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitBooleanValueTok(s)
+	}
+}
+
+func (s *BooleanValueTokContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitBooleanValueTok(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -94468,6 +98858,16 @@ func (s *TableOrPartitionContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *TableOrPartitionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTableOrPartition(s)
+	}
+}
+
+func (s *TableOrPartitionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTableOrPartition(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -94647,6 +99047,16 @@ func (s *PartitionSpecContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *PartitionSpecContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPartitionSpec(s)
+	}
+}
+
+func (s *PartitionSpecContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPartitionSpec(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -94839,6 +99249,16 @@ func (s *PartitionValContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PartitionValContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPartitionVal(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -95018,6 +99438,16 @@ func (s *PartitionSelectorSpecContext) EnterRule(listener antlr.ParseTreeListene
 func (s *PartitionSelectorSpecContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPartitionSelectorSpec(s)
+	}
+}
+
+func (s *PartitionSelectorSpecContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPartitionSelectorSpec(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -95214,6 +99644,16 @@ func (s *PartitionSelectorValContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *PartitionSelectorValContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPartitionSelectorVal(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -95335,6 +99775,16 @@ func (s *PartitionSelectorOperatorContext) EnterRule(listener antlr.ParseTreeLis
 func (s *PartitionSelectorOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPartitionSelectorOperator(s)
+	}
+}
+
+func (s *PartitionSelectorOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPartitionSelectorOperator(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -95485,6 +99935,16 @@ func (s *SubQuerySelectorOperatorContext) EnterRule(listener antlr.ParseTreeList
 func (s *SubQuerySelectorOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitSubQuerySelectorOperator(s)
+	}
+}
+
+func (s *SubQuerySelectorOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSubQuerySelectorOperator(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -95806,6 +100266,16 @@ func (s *SysFuncNamesContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *SysFuncNamesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSysFuncNames(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -95945,6 +100415,16 @@ func (s *DescFuncNamesContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *DescFuncNamesContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitDescFuncNames(s)
+	}
+}
+
+func (s *DescFuncNamesContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDescFuncNames(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -96092,6 +100572,16 @@ func (s *Id_Context) EnterRule(listener antlr.ParseTreeListener) {
 func (s *Id_Context) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitId_(s)
+	}
+}
+
+func (s *Id_Context) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitId_(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -96278,6 +100768,16 @@ func (s *FunctionIdentifierContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *FunctionIdentifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitFunctionIdentifier(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -96415,6 +100915,16 @@ func (s *PrincipalIdentifierContext) EnterRule(listener antlr.ParseTreeListener)
 func (s *PrincipalIdentifierContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrincipalIdentifier(s)
+	}
+}
+
+func (s *PrincipalIdentifierContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrincipalIdentifier(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -97662,6 +102172,16 @@ func (s *NonReservedContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *NonReservedContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitNonReserved(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -97845,6 +102365,16 @@ func (s *Sql11ReservedKeywordsUsedAsFunctionNameContext) ExitRule(listener antlr
 	}
 }
 
+func (s *Sql11ReservedKeywordsUsedAsFunctionNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitSql11ReservedKeywordsUsedAsFunctionName(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -97967,6 +102497,16 @@ func (s *HintContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *HintContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitHint(s)
+	}
+}
+
+func (s *HintContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitHint(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -98122,6 +102662,16 @@ func (s *HintListContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *HintListContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitHintList(s)
+	}
+}
+
+func (s *HintListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitHintList(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -98295,6 +102845,16 @@ func (s *HintItemContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *HintItemContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitHintItem(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -98439,6 +102999,16 @@ func (s *HintNameContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *HintNameContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitHintName(s)
+	}
+}
+
+func (s *HintNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitHintName(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -98598,6 +103168,16 @@ func (s *HintArgsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *HintArgsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitHintArgs(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -98736,6 +103316,16 @@ func (s *HintArgNameContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *HintArgNameContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitHintArgName(s)
+	}
+}
+
+func (s *HintArgNameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitHintArgName(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -98883,6 +103473,16 @@ func (s *PrepareStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *PrepareStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPrepareStatement(s)
+	}
+}
+
+func (s *PrepareStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPrepareStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -99041,6 +103641,16 @@ func (s *ExecuteStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ExecuteStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitExecuteStatement(s)
+	}
+}
+
+func (s *ExecuteStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitExecuteStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -99208,6 +103818,16 @@ func (s *ExecuteParamListContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ExecuteParamListContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitExecuteParamList(s)
+	}
+}
+
+func (s *ExecuteParamListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitExecuteParamList(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -99575,6 +104195,16 @@ func (s *ResourcePlanDdlStatementsContext) ExitRule(listener antlr.ParseTreeList
 	}
 }
 
+func (s *ResourcePlanDdlStatementsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitResourcePlanDdlStatements(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -99841,6 +104471,16 @@ func (s *RpAssignContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *RpAssignContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRpAssign(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -100057,6 +104697,16 @@ func (s *RpAssignListContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *RpAssignListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRpAssignList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -100195,6 +104845,16 @@ func (s *RpUnassignContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *RpUnassignContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitRpUnassign(s)
+	}
+}
+
+func (s *RpUnassignContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRpUnassign(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -100380,6 +105040,16 @@ func (s *RpUnassignListContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *RpUnassignListContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitRpUnassignList(s)
+	}
+}
+
+func (s *RpUnassignListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitRpUnassignList(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -100637,6 +105307,16 @@ func (s *CreateResourcePlanStatementContext) ExitRule(listener antlr.ParseTreeLi
 	}
 }
 
+func (s *CreateResourcePlanStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreateResourcePlanStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -100848,6 +105528,16 @@ func (s *WithReplaceContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *WithReplaceContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitWithReplace(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -100976,6 +105666,16 @@ func (s *ActivateContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *ActivateContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitActivate(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -101096,6 +105796,16 @@ func (s *EnableContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *EnableContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitEnable(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -101199,6 +105909,16 @@ func (s *DisableContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *DisableContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDisable(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -101299,6 +106019,16 @@ func (s *UnmanagedContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *UnmanagedContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitUnmanaged(s)
+	}
+}
+
+func (s *UnmanagedContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitUnmanaged(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -101582,6 +106312,16 @@ func (s *AlterResourcePlanStatementContext) ExitRule(listener antlr.ParseTreeLis
 	}
 }
 
+func (s *AlterResourcePlanStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterResourcePlanStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -101861,6 +106601,16 @@ func (s *GlobalWmStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *GlobalWmStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitGlobalWmStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -102071,6 +106821,16 @@ func (s *ReplaceResourcePlanStatementContext) EnterRule(listener antlr.ParseTree
 func (s *ReplaceResourcePlanStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitReplaceResourcePlanStatement(s)
+	}
+}
+
+func (s *ReplaceResourcePlanStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitReplaceResourcePlanStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -102334,6 +107094,16 @@ func (s *DropResourcePlanStatementContext) ExitRule(listener antlr.ParseTreeList
 	}
 }
 
+func (s *DropResourcePlanStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDropResourcePlanStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -102526,6 +107296,16 @@ func (s *PoolPathContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PoolPathContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPoolPath(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -102669,6 +107449,16 @@ func (s *TriggerExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TriggerExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTriggerExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -102782,6 +107572,16 @@ func (s *TriggerExpressionStandaloneContext) EnterRule(listener antlr.ParseTreeL
 func (s *TriggerExpressionStandaloneContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTriggerExpressionStandalone(s)
+	}
+}
+
+func (s *TriggerExpressionStandaloneContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTriggerExpressionStandalone(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -102937,6 +107737,16 @@ func (s *TriggerOrExpressionContext) EnterRule(listener antlr.ParseTreeListener)
 func (s *TriggerOrExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTriggerOrExpression(s)
+	}
+}
+
+func (s *TriggerOrExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTriggerOrExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -103119,6 +107929,16 @@ func (s *TriggerAndExpressionContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *TriggerAndExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTriggerAndExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -103296,6 +108116,16 @@ func (s *TriggerAtomExpressionContext) ExitRule(listener antlr.ParseTreeListener
 	}
 }
 
+func (s *TriggerAtomExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTriggerAtomExpression(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -103408,6 +108238,16 @@ func (s *TriggerLiteralContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *TriggerLiteralContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTriggerLiteral(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -103513,6 +108353,16 @@ func (s *ComparisionOperatorContext) EnterRule(listener antlr.ParseTreeListener)
 func (s *ComparisionOperatorContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitComparisionOperator(s)
+	}
+}
+
+func (s *ComparisionOperatorContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitComparisionOperator(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -103643,6 +108493,16 @@ func (s *TriggerActionExpressionContext) EnterRule(listener antlr.ParseTreeListe
 func (s *TriggerActionExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTriggerActionExpression(s)
+	}
+}
+
+func (s *TriggerActionExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTriggerActionExpression(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -103801,6 +108661,16 @@ func (s *TriggerActionExpressionStandaloneContext) EnterRule(listener antlr.Pars
 func (s *TriggerActionExpressionStandaloneContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitTriggerActionExpressionStandalone(s)
+	}
+}
+
+func (s *TriggerActionExpressionStandaloneContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitTriggerActionExpressionStandalone(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -104031,6 +108901,16 @@ func (s *CreateTriggerStatementContext) EnterRule(listener antlr.ParseTreeListen
 func (s *CreateTriggerStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCreateTriggerStatement(s)
+	}
+}
+
+func (s *CreateTriggerStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreateTriggerStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -104371,6 +109251,16 @@ func (s *AlterTriggerStatementContext) EnterRule(listener antlr.ParseTreeListene
 func (s *AlterTriggerStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitAlterTriggerStatement(s)
+	}
+}
+
+func (s *AlterTriggerStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterTriggerStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -104722,6 +109612,16 @@ func (s *DropTriggerStatementContext) ExitRule(listener antlr.ParseTreeListener)
 	}
 }
 
+func (s *DropTriggerStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDropTriggerStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -104953,6 +109853,16 @@ func (s *PoolAssignContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *PoolAssignContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitPoolAssign(s)
+	}
+}
+
+func (s *PoolAssignContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPoolAssign(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -105228,6 +110138,16 @@ func (s *PoolAssignListContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *PoolAssignListContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitPoolAssignList(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -105437,6 +110357,16 @@ func (s *CreatePoolStatementContext) EnterRule(listener antlr.ParseTreeListener)
 func (s *CreatePoolStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCreatePoolStatement(s)
+	}
+}
+
+func (s *CreatePoolStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreatePoolStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -105726,6 +110656,16 @@ func (s *AlterPoolStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
+func (s *AlterPoolStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterPoolStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -105991,6 +110931,16 @@ func (s *DropPoolStatementContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *DropPoolStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitDropPoolStatement(s)
+	}
+}
+
+func (s *DropPoolStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDropPoolStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -106286,6 +111236,16 @@ func (s *CreateMappingStatementContext) EnterRule(listener antlr.ParseTreeListen
 func (s *CreateMappingStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitCreateMappingStatement(s)
+	}
+}
+
+func (s *CreateMappingStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitCreateMappingStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 
@@ -106687,6 +111647,16 @@ func (s *AlterMappingStatementContext) ExitRule(listener antlr.ParseTreeListener
 	}
 }
 
+func (s *AlterMappingStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitAlterMappingStatement(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
 
 
 
@@ -107006,6 +111976,16 @@ func (s *DropMappingStatementContext) EnterRule(listener antlr.ParseTreeListener
 func (s *DropMappingStatementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(HiveParserListener); ok {
 		listenerT.ExitDropMappingStatement(s)
+	}
+}
+
+func (s *DropMappingStatementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case HiveParserVisitor:
+		return t.VisitDropMappingStatement(s)
+
+	default:
+		return t.VisitChildren(s)
 	}
 }
 

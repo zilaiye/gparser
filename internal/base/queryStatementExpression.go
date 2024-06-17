@@ -1,6 +1,7 @@
 package base
 
 type QueryStatementExpression struct {
-	WithClause *WithClause
+	SourceCode
+	WithClause                   *WithClause
 	QueryStatementExpressionBody *QueryStatementExpressionBody
 }
